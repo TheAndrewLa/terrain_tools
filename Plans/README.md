@@ -1,4 +1,4 @@
-# This is plans for our project:
+# Plans for project:
 
 - First milestone *(31st of March)* [LINK](./FirstMilestone.md)
 - Second milestone *(28th of April)* [LINK](./SecondMilestone.md)
