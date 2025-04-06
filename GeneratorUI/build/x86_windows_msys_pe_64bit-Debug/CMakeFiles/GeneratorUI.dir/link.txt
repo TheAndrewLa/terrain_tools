@@ -1,3 +1,0 @@
-"D:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\GeneratorUI.dir/objects.a
-C:\msys64\mingw64\bin\ar.exe qc CMakeFiles\GeneratorUI.dir/objects.a @CMakeFiles\GeneratorUI.dir\objects1.rsp
-C:\msys64\mingw64\bin\g++.exe -DQT_QML_DEBUG -g -mwindows -Wl,--whole-archive CMakeFiles\GeneratorUI.dir/objects.a -Wl,--no-whole-archive -o GeneratorUI.exe -Wl,--out-implib,libGeneratorUI.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\GeneratorUI.dir\linkLibs.rsp
