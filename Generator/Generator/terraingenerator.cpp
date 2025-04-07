@@ -1,5 +1,7 @@
 #include "terraingenerator.h"
 
+#include <iostream>
+
 using namespace terraingenerator;
 
 long TerrainGenerator::generate_random_seed()
@@ -24,12 +26,20 @@ Terrain TerrainGenerator::generate(HeightMap& map)
 
     Terrain terrain{map.height, map.width};
 
+    double x_offset = map.height * sqrt(2) + map.x_offset;
+    double y_offset = map.width * sqrt(2) + map.x_offset;
+
     for (int x = 0; x < map.height; ++x) {
         for (int y = 0; y < map.width; ++y) {
-            double nx = (x + map.x_offset);
-            double ny = (y + map.y_offset);
-            nx = (nx * cos_angle - ny * sin_angle) / map.scale;
-            ny = (nx * sin_angle + ny * cos_angle) / map.scale;
+            double xx = x + x_offset;
+            double yy = y + y_offset;
+
+            double nx = x_offset + (xx - x_offset) * cos_angle - (yy - y_offset) * sin_angle;
+            double ny = y_offset + (xx - x_offset) * sin_angle + (yy - y_offset) * cos_angle;
+
+            nx = nx / map.scale;
+            ny = ny / map.scale;
+
             terrain[x][y] = static_cast<char>(noise_.noise2D(nx, ny, map.octaves, map.amplitude) * 255);
         }
     }

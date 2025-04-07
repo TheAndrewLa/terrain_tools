@@ -38,16 +38,16 @@ double PerlinNoise::smoothNoise(double x, double y) {
     int ab = permutation[(permutation[x_integer_part] + y_integer_part + 1) & 255];
     int bb = permutation[(permutation[(x_integer_part + 1) & 255] + y_integer_part + 1) & 255];
 
-    double x1 = cosine_interpolate(gradient(aa, x_fractional_part, y_fractional_part),
+    double x1 = linear_interpolate(gradient(aa, x_fractional_part, y_fractional_part),
                                    gradient(ba, x_fractional_part - 1, y_fractional_part), u);
-    double y1 = cosine_interpolate(gradient(ab, x_fractional_part, y_fractional_part - 1),
+    double y1 = linear_interpolate(gradient(ab, x_fractional_part, y_fractional_part - 1),
                                    gradient(bb, x_fractional_part - 1, y_fractional_part - 1), u);
-    return (cosine_interpolate(x1, y1, v) + 1) / 2;
+    return (linear_interpolate(x1, y1, v) + 1) / 2;
 }
 
 double PerlinNoise::noise2D(double x, double y, int octaves, double amplitude) {
     double total = 0;
-    double frequency = 0.7;
+    double frequency = 0.01;
     double max_value = 0;
 
     for (int i = 0; i < octaves; ++i) {
