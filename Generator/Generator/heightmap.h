@@ -4,15 +4,15 @@
 namespace terraingenerator {
     struct HeightMap
     {
-        int height;
-        int width;
-        int x_offset;
-        int y_offset;
-        int scale;
-        double angle;
-        double amplitude;
-        int octaves;
-        int seed;
+        int height = 512;
+        int width = 512;
+        int x_offset = 0;
+        int y_offset = 0;
+        int scale = 1;
+        double angle = 0;
+        double amplitude = 1;
+        int octaves = 1;
+        int seed = 0;
     };
 }
 #endif // HEIGHTMAP_H

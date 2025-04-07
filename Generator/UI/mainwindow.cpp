@@ -10,6 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->seedLE->setValidator(new QIntValidator(0, INT_MAX, this));
     scene_ = new QGraphicsScene();
     ui->graphicsView->setScene(scene_);
+    get_current_map();
 }
 
 MainWindow::~MainWindow()
@@ -19,14 +20,7 @@ MainWindow::~MainWindow()
     delete item_;
 }
 
-void MainWindow::on_generatePB_clicked()
-{
-    if (!mtx_generator_.try_lock()) {
-        return;
-    }
-
-    ui->generatePB->setEnabled(false);
-    ui->imagePB->setEnabled(false);
+void MainWindow::get_current_map() {
     int width = ui->widthSB->value();
     int height = ui->heightSB->value();
     int x_center = ui->centerXSB->value();
@@ -40,7 +34,18 @@ void MainWindow::on_generatePB_clicked()
         height, width, x_center, y_center,
         scale, angle, amplitude, octaves
     };
+}
 
+void MainWindow::on_generatePB_clicked()
+{
+    if (!mtx_generator_.try_lock()) {
+        return;
+    }
+
+    ui->generatePB->setEnabled(false);
+    ui->imagePB->setEnabled(false);
+
+    get_current_map();
 
     std::thread th([this]{
         terrain_ = tg_.generate(map_);
@@ -55,23 +60,27 @@ void MainWindow::on_generatePB_clicked()
 
 }
 
+void MainWindow::generate_random() {
+    tg_.generate_random_map(map_);
+    ui->widthSB->setValue(map_.width);
+    ui->heightSB->setValue(map_.height);
+    ui->centerXSB->setValue(map_.x_offset);
+    ui->centerYSB->setValue(map_.y_offset);
+    ui->scaleSB->setValue(map_.scale);
+
+    ui->angleLE->setText(QString::fromStdString(std::format("{:.2f}", map_.angle)));
+    ui->angleHS->setValue(map_.angle * 100);
+
+    ui->amplitudeLE->setText(QString::fromStdString(std::format("{:.2f}", map_.amplitude)));
+    ui->amplitudeHS->setValue(map_.amplitude * 100);
+
+    ui->octavesSB->setValue(map_.octaves);
+}
+
 void MainWindow::on_randomPB_clicked()
 {
-    HeightMap map = tg_.generate_random_map();
-    ui->seedLE->setText(QString::fromStdString(std::to_string(map.seed)));
-    ui->widthSB->setValue(map.width);
-    ui->heightSB->setValue(map.height);
-    ui->centerXSB->setValue(map.x_offset);
-    ui->centerYSB->setValue(map.y_offset);
-    ui->scaleSB->setValue(map.scale);
-
-    ui->angleLE->setText(QString::fromStdString(std::format("{:.2f}", map.angle)));
-    ui->angleHS->setValue(map.angle * 100);
-
-    ui->amplitudeLE->setText(QString::fromStdString(std::format("{:.2f}", map.amplitude)));
-    ui->amplitudeHS->setValue(map.amplitude * 100);
-
-    ui->octavesSB->setValue(map.octaves);
+    generate_random();
+    ui->seedLE->setText(QString::fromStdString(std::to_string(map_.seed)));
 }
 
 void MainWindow::on_imagePB_clicked()
@@ -104,3 +113,11 @@ void MainWindow::on_angleHS_valueChanged(int value)
 {
     ui->angleLE->setText(QString::fromStdString(std::format("{:.2f}", value * 0.01)));
 }
+
+
+void MainWindow::on_seedLE_textChanged(const QString &arg1)
+{
+    map_.seed = arg1.toInt();
+    generate_random();
+}
+

@@ -22,15 +22,17 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 private:
-    TerrainGenerator tg_;
+    TerrainGenerator tg_{};
     Terrain terrain_;
-    HeightMap map_;
+    HeightMap map_{};
     std::mutex mtx_image_;
     std::mutex mtx_generator_;
 
     const char* file_image_ = "out.png";
     QGraphicsScene *scene_ = nullptr;
     QGraphicsPixmapItem* item_ = nullptr;
+    void get_current_map();
+    void generate_random();
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
@@ -46,6 +48,8 @@ private slots:
     void on_amplitudeHS_valueChanged(int value);
 
     void on_angleHS_valueChanged(int value);
+
+    void on_seedLE_textChanged(const QString &arg1);
 
 private:
     Ui::MainWindow *ui;

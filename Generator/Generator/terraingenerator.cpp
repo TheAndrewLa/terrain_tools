@@ -1,21 +1,17 @@
 #include "terraingenerator.h"
 
-#include <iostream>
-
 using namespace terraingenerator;
 
-long TerrainGenerator::generate_random_seed()
+int TerrainGenerator::generate_random_seed()
 {
     return dist_(generator_);
 }
 
-HeightMap TerrainGenerator::generate_random_map()
+void TerrainGenerator::generate_random_map(HeightMap& map)
 {
-    HeightMap map;
     map.seed = dist_(generator_);
-    map.amplitude = ((map.seed & 0xffff) / 10) * 0.01;
-    map.octaves = 1 + (map.seed & 0xffff0000 >> 16) % 10;
-    return map;
+    map.amplitude = ((map.seed & 0xffff) % 500) * 0.01;
+    map.octaves = 1 + (map.seed & 0xffff0000 >> 16) % 5;
 }
 
 TerrainGenerator::TerrainGenerator() : generator_(rd_()) {}
@@ -40,7 +36,7 @@ Terrain TerrainGenerator::generate(HeightMap& map)
             nx = nx / map.scale;
             ny = ny / map.scale;
 
-            terrain[x][y] = static_cast<char>(noise_.noise2D(nx, ny, map.octaves, map.amplitude) * 255);
+            terrain[x][y] = static_cast<uchar>(noise_.noise2D(nx, ny, map.octaves, map.amplitude) * 255);
         }
     }
     return terrain;

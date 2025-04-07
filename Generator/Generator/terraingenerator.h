@@ -16,10 +16,10 @@ namespace terraingenerator {
         std::mt19937 generator_;
         std::uniform_int_distribution<int> dist_;
     public:
-        long generate_random_seed();
+        int generate_random_seed();
         TerrainGenerator();
         Terrain generate(HeightMap& map);
-        HeightMap generate_random_map();
+        void generate_random_map(HeightMap& map);
     };
 }
 #endif // TERRAINGENERATOR_H
