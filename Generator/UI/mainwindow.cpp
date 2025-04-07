@@ -76,28 +76,21 @@ void MainWindow::on_randomPB_clicked()
 
 void MainWindow::on_imagePB_clicked()
 {
-    if (!mtx_generator_.try_lock()) {
+    if (terrain_.weigth() == 0 || terrain_.height() == 0) {
         return;
     }
-
     ui->imagePB->setEnabled(false);
     ui->generatePB->setEnabled(false);
 
-    std::thread th([this]{
-        export_png(terrain_, file_image_);
-        ui->outputL->setText("image");
+    export_png(terrain_, file_image_);
+    ui->outputL->setText("image");
 
-        QPixmap p(file_image_);
-        ui->graphicsView->scene()->clear();
-        ui->graphicsView->scene()->addPixmap(p);
+    QPixmap p(file_image_);
+    ui->graphicsView->scene()->clear();
+    ui->graphicsView->scene()->addPixmap(p);
 
-        ui->generatePB->setEnabled(true);
-        ui->imagePB->setEnabled(true);
-
-        mtx_generator_.unlock();
-    });
-
-    th.detach();
+    ui->generatePB->setEnabled(true);
+    ui->imagePB->setEnabled(true);
 }
 
 
@@ -111,4 +104,3 @@ void MainWindow::on_angleHS_valueChanged(int value)
 {
     ui->angleLE->setText(QString::fromStdString(std::format("{:.2f}", value * 0.01)));
 }
-

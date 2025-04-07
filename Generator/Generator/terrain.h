@@ -35,6 +35,8 @@ namespace terraingenerator {
         Terrain(const Terrain& other) = delete;
         Terrain& operator=(const Terrain& other) = delete;
         Terrain(Terrain&& other);
+        int weigth() const;
+        int height() const;
         Terrain& operator=(Terrain&& other);
         operator std::string();
         Array operator[](usize x) const;

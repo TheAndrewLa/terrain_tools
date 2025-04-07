@@ -161,7 +161,7 @@ public:
         angleHS = new QSlider(centralwidget);
         angleHS->setObjectName("angleHS");
         angleHS->setGeometry(QRect(188, 460, 160, 22));
-        angleHS->setMaximum(3600);
+        angleHS->setMaximum(36000);
         angleHS->setSingleStep(1);
         angleHS->setValue(0);
         angleHS->setOrientation(Qt::Orientation::Horizontal);

@@ -29,6 +29,13 @@ Terrain& Terrain::operator=(Terrain&& other) {
     return *this;
 }
 
+int Terrain::weigth() const {
+    return width_;
+}
+int Terrain::height() const {
+    return height_;
+}
+
 Terrain::operator std::string()
 {
     std::string map_str = "";

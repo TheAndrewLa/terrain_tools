@@ -375,7 +375,7 @@
      </rect>
     </property>
     <property name="maximum">
-     <number>3600</number>
+     <number>36000</number>
     </property>
     <property name="singleStep">
      <number>1</number>

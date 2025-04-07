@@ -291,6 +291,9 @@ CMAKE_TAPI:FILEPATH=CMAKE_TAPI-NOTFOUND
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
+//Enable Address, Undefined Behavior, and Memory Leak sanitizers
+ENABLE_SANITIZERS:BOOL=OFF
+
 //Value Computed by CMake
 Generator_BINARY_DIR:STATIC=D:/terrain_tools/Generator/build/x86_windows_msys_pe_64bit-Debug
 
