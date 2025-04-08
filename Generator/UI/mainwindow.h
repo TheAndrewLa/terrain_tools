@@ -1,13 +1,13 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <thread>
 #include <mutex>
-#include <format>
+
 
 #include <QMainWindow>
 #include <QGraphicsItem>
 #include "../Generator/terraingenerator.h"
+
 
 using namespace terraingenerator;
 

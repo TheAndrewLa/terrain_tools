@@ -4,8 +4,10 @@ using namespace terraingenerator;
 
 Terrain::Terrain() {}
 
-Terrain::Terrain(int width, int height) : width_(width), height_(height) {
-    heightmap_ = new uchar[height * width];
+Terrain::Terrain(int width, int height) : Terrain(width, height, new uchar[height * width]) {
+}
+
+Terrain::Terrain(int width, int height, uchar* map) : width_(width), height_(height), heightmap_(map) {
 }
 
 Terrain::Terrain(Terrain&& other) :
@@ -29,7 +31,7 @@ Terrain& Terrain::operator=(Terrain&& other) {
     return *this;
 }
 
-int Terrain::weigth() const {
+int Terrain::width() const {
     return width_;
 }
 int Terrain::height() const {

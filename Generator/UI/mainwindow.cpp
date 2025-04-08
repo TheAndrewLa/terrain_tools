@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
-
+#include <format>
+#include <thread>
+#include "../FileConverter/fileconverter.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -57,7 +59,6 @@ void MainWindow::on_generatePB_clicked()
         mtx_generator_.unlock();
     });
     th.detach();
-
 }
 
 void MainWindow::generate_random() {
@@ -81,16 +82,18 @@ void MainWindow::on_randomPB_clicked()
 {
     generate_random();
     ui->seedLE->setText(QString::fromStdString(std::to_string(map_.seed)));
+
 }
 
 void MainWindow::on_imagePB_clicked()
 {
-    if (terrain_.weigth() == 0 || terrain_.height() == 0) {
+    if (terrain_.width() == 0 || terrain_.height() == 0) {
         return;
     }
     ui->imagePB->setEnabled(false);
     ui->generatePB->setEnabled(false);
-
+    FileConverter::to_file(terrain_, "out");
+    terrain_ = FileConverter::from_file("out");
     export_png(terrain_, file_image_);
     ui->outputL->setText("image");
 
