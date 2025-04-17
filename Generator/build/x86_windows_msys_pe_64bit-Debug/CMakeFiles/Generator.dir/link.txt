@@ -1,3 +1,0 @@
-"D:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\Generator.dir/objects.a
-C:\msys64\mingw64\bin\ar.exe qc CMakeFiles\Generator.dir/objects.a @CMakeFiles\Generator.dir\objects1.rsp
-C:\msys64\mingw64\bin\g++.exe -DQT_QML_DEBUG -g -mwindows -Wl,--whole-archive CMakeFiles\Generator.dir/objects.a -Wl,--no-whole-archive -o Generator.exe -Wl,--out-implib,libGenerator.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\Generator.dir\linkLibs.rsp
