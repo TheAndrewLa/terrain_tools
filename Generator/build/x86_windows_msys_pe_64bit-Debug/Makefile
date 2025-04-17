@@ -199,6 +199,54 @@ Generator_autogen/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Generator_autogen.dir\build.make CMakeFiles/Generator_autogen.dir/build
 .PHONY : Generator_autogen/fast
 
+FileConverter/fileconverter.obj: FileConverter/fileconverter.cpp.obj
+.PHONY : FileConverter/fileconverter.obj
+
+# target to build an object file
+FileConverter/fileconverter.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Generator.dir\build.make CMakeFiles/Generator.dir/FileConverter/fileconverter.cpp.obj
+.PHONY : FileConverter/fileconverter.cpp.obj
+
+FileConverter/fileconverter.i: FileConverter/fileconverter.cpp.i
+.PHONY : FileConverter/fileconverter.i
+
+# target to preprocess a source file
+FileConverter/fileconverter.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Generator.dir\build.make CMakeFiles/Generator.dir/FileConverter/fileconverter.cpp.i
+.PHONY : FileConverter/fileconverter.cpp.i
+
+FileConverter/fileconverter.s: FileConverter/fileconverter.cpp.s
+.PHONY : FileConverter/fileconverter.s
+
+# target to generate assembly for a file
+FileConverter/fileconverter.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Generator.dir\build.make CMakeFiles/Generator.dir/FileConverter/fileconverter.cpp.s
+.PHONY : FileConverter/fileconverter.cpp.s
+
+FileConverter/huffmancompressor.obj: FileConverter/huffmancompressor.cpp.obj
+.PHONY : FileConverter/huffmancompressor.obj
+
+# target to build an object file
+FileConverter/huffmancompressor.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Generator.dir\build.make CMakeFiles/Generator.dir/FileConverter/huffmancompressor.cpp.obj
+.PHONY : FileConverter/huffmancompressor.cpp.obj
+
+FileConverter/huffmancompressor.i: FileConverter/huffmancompressor.cpp.i
+.PHONY : FileConverter/huffmancompressor.i
+
+# target to preprocess a source file
+FileConverter/huffmancompressor.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Generator.dir\build.make CMakeFiles/Generator.dir/FileConverter/huffmancompressor.cpp.i
+.PHONY : FileConverter/huffmancompressor.cpp.i
+
+FileConverter/huffmancompressor.s: FileConverter/huffmancompressor.cpp.s
+.PHONY : FileConverter/huffmancompressor.s
+
+# target to generate assembly for a file
+FileConverter/huffmancompressor.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Generator.dir\build.make CMakeFiles/Generator.dir/FileConverter/huffmancompressor.cpp.s
+.PHONY : FileConverter/huffmancompressor.cpp.s
+
 Generator/perlinnoise.obj: Generator/perlinnoise.cpp.obj
 .PHONY : Generator/perlinnoise.obj
 
@@ -382,6 +430,12 @@ help:
 	@echo ... Generator_autogen
 	@echo ... Generator_autogen_timestamp_deps
 	@echo ... Generator
+	@echo ... FileConverter/fileconverter.obj
+	@echo ... FileConverter/fileconverter.i
+	@echo ... FileConverter/fileconverter.s
+	@echo ... FileConverter/huffmancompressor.obj
+	@echo ... FileConverter/huffmancompressor.i
+	@echo ... FileConverter/huffmancompressor.s
 	@echo ... Generator/perlinnoise.obj
 	@echo ... Generator/perlinnoise.i
 	@echo ... Generator/perlinnoise.s

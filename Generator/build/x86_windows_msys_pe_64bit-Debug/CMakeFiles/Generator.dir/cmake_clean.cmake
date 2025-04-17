@@ -1,4 +1,8 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/Generator.dir/FileConverter/fileconverter.cpp.obj"
+  "CMakeFiles/Generator.dir/FileConverter/fileconverter.cpp.obj.d"
+  "CMakeFiles/Generator.dir/FileConverter/huffmancompressor.cpp.obj"
+  "CMakeFiles/Generator.dir/FileConverter/huffmancompressor.cpp.obj.d"
   "CMakeFiles/Generator.dir/Generator/perlinnoise.cpp.obj"
   "CMakeFiles/Generator.dir/Generator/perlinnoise.cpp.obj.d"
   "CMakeFiles/Generator.dir/Generator/terrain.cpp.obj"

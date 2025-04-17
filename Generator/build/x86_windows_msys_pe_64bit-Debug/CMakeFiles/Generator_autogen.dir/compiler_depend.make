@@ -21,7 +21,6 @@ Generator_autogen/timestamp: C:/msys64/mingw64/include/_mingw.h \
   C:/msys64/mingw64/include/c++/13.1.0/bits/allocator.h \
   C:/msys64/mingw64/include/c++/13.1.0/bits/atomic_base.h \
   C:/msys64/mingw64/include/c++/13.1.0/bits/atomic_lockfree_defines.h \
-  C:/msys64/mingw64/include/c++/13.1.0/bits/atomic_timed_wait.h \
   C:/msys64/mingw64/include/c++/13.1.0/bits/atomic_wait.h \
   C:/msys64/mingw64/include/c++/13.1.0/bits/basic_ios.h \
   C:/msys64/mingw64/include/c++/13.1.0/bits/basic_ios.tcc \
@@ -84,7 +83,6 @@ Generator_autogen/timestamp: C:/msys64/mingw64/include/_mingw.h \
   C:/msys64/mingw64/include/c++/13.1.0/bits/ranges_util.h \
   C:/msys64/mingw64/include/c++/13.1.0/bits/refwrap.h \
   C:/msys64/mingw64/include/c++/13.1.0/bits/requires_hosted.h \
-  C:/msys64/mingw64/include/c++/13.1.0/bits/semaphore_base.h \
   C:/msys64/mingw64/include/c++/13.1.0/bits/shared_ptr.h \
   C:/msys64/mingw64/include/c++/13.1.0/bits/shared_ptr_atomic.h \
   C:/msys64/mingw64/include/c++/13.1.0/bits/shared_ptr_base.h \
@@ -93,7 +91,6 @@ Generator_autogen/timestamp: C:/msys64/mingw64/include/_mingw.h \
   C:/msys64/mingw64/include/c++/13.1.0/bits/std_abs.h \
   C:/msys64/mingw64/include/c++/13.1.0/bits/std_function.h \
   C:/msys64/mingw64/include/c++/13.1.0/bits/std_mutex.h \
-  C:/msys64/mingw64/include/c++/13.1.0/bits/std_thread.h \
   C:/msys64/mingw64/include/c++/13.1.0/bits/stl_algo.h \
   C:/msys64/mingw64/include/c++/13.1.0/bits/stl_algobase.h \
   C:/msys64/mingw64/include/c++/13.1.0/bits/stl_bvector.h \
@@ -119,7 +116,6 @@ Generator_autogen/timestamp: C:/msys64/mingw64/include/_mingw.h \
   C:/msys64/mingw64/include/c++/13.1.0/bits/streambuf_iterator.h \
   C:/msys64/mingw64/include/c++/13.1.0/bits/string_view.tcc \
   C:/msys64/mingw64/include/c++/13.1.0/bits/stringfwd.h \
-  C:/msys64/mingw64/include/c++/13.1.0/bits/this_thread_sleep.h \
   C:/msys64/mingw64/include/c++/13.1.0/bits/uniform_int_dist.h \
   C:/msys64/mingw64/include/c++/13.1.0/bits/unique_lock.h \
   C:/msys64/mingw64/include/c++/13.1.0/bits/unique_ptr.h \
@@ -181,17 +177,14 @@ Generator_autogen/timestamp: C:/msys64/mingw64/include/_mingw.h \
   C:/msys64/mingw64/include/c++/13.1.0/pstl/glue_numeric_defs.h \
   C:/msys64/mingw64/include/c++/13.1.0/random \
   C:/msys64/mingw64/include/c++/13.1.0/ratio \
-  C:/msys64/mingw64/include/c++/13.1.0/semaphore \
   C:/msys64/mingw64/include/c++/13.1.0/span \
   C:/msys64/mingw64/include/c++/13.1.0/sstream \
   C:/msys64/mingw64/include/c++/13.1.0/stdexcept \
   C:/msys64/mingw64/include/c++/13.1.0/stdlib.h \
-  C:/msys64/mingw64/include/c++/13.1.0/stop_token \
   C:/msys64/mingw64/include/c++/13.1.0/streambuf \
   C:/msys64/mingw64/include/c++/13.1.0/string \
   C:/msys64/mingw64/include/c++/13.1.0/string_view \
   C:/msys64/mingw64/include/c++/13.1.0/system_error \
-  C:/msys64/mingw64/include/c++/13.1.0/thread \
   C:/msys64/mingw64/include/c++/13.1.0/tr1/bessel_function.tcc \
   C:/msys64/mingw64/include/c++/13.1.0/tr1/beta_function.tcc \
   C:/msys64/mingw64/include/c++/13.1.0/tr1/ell_integral.tcc \
@@ -244,7 +237,6 @@ Generator_autogen/timestamp: C:/msys64/mingw64/include/_mingw.h \
   C:/msys64/mingw64/include/sec_api/string_s.h \
   C:/msys64/mingw64/include/sec_api/sys/timeb_s.h \
   C:/msys64/mingw64/include/sec_api/wchar_s.h \
-  C:/msys64/mingw64/include/semaphore.h \
   C:/msys64/mingw64/include/signal.h \
   C:/msys64/mingw64/include/stdio.h \
   C:/msys64/mingw64/include/string.h \
@@ -613,6 +605,10 @@ Generator_autogen/timestamp: C:/msys64/mingw64/include/_mingw.h \
   D:/Qt/6.8.3/mingw_64/lib/cmake/Qt6ZlibPrivate/Qt6ZlibPrivateTargets.cmake \
   D:/Qt/6.8.3/mingw_64/lib/cmake/Qt6ZlibPrivate/Qt6ZlibPrivateVersionlessAliasTargets.cmake \
   D:/terrain_tools/Generator/CMakeLists.txt \
+  D:/terrain_tools/Generator/FileConverter/fileconverter.cpp \
+  D:/terrain_tools/Generator/FileConverter/fileconverter.h \
+  D:/terrain_tools/Generator/FileConverter/huffmancompressor.cpp \
+  D:/terrain_tools/Generator/FileConverter/huffmancompressor.h \
   D:/terrain_tools/Generator/Generator/heightmap.h \
   D:/terrain_tools/Generator/Generator/perlinnoise.cpp \
   D:/terrain_tools/Generator/Generator/perlinnoise.h \
@@ -666,6 +662,8 @@ C:/msys64/mingw64/include/c++/13.1.0/bits/stl_tree.h:
 
 C:/msys64/mingw64/include/c++/13.1.0/bits/new_allocator.h:
 
+D:/Qt/6.8.3/mingw_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsTargets-relwithdebinfo.cmake:
+
 C:/msys64/mingw64/include/c++/13.1.0/backward/binders.h:
 
 D:/Qt/6.8.3/mingw_64/lib/cmake/Qt6/QtPublicCMakeVersionHelpers.cmake:
@@ -687,6 +685,8 @@ C:/msys64/mingw64/include/c++/13.1.0/bits/allocated_ptr.h:
 C:/msys64/mingw64/include/c++/13.1.0/bits/shared_ptr_atomic.h:
 
 C:/msys64/mingw64/include/c++/13.1.0/atomic:
+
+C:/msys64/mingw64/include/c++/13.1.0/bits/node_handle.h:
 
 D:/Qt/6.8.3/mingw_64/include/QtCore/qhashfunctions.h:
 
@@ -747,14 +747,6 @@ D:/Qt/6.8.3/mingw_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsConfigVersion.cmak
 D:/Qt/6.8.3/mingw_64/include/QtWidgets/qtabwidget.h:
 
 C:/msys64/mingw64/include/c++/13.1.0/bits/atomic_wait.h:
-
-C:/msys64/mingw64/include/c++/13.1.0/bits/atomic_timed_wait.h:
-
-C:/msys64/mingw64/include/c++/13.1.0/bits/ranges_cmp.h:
-
-D:/Qt/6.8.3/mingw_64/lib/cmake/Qt6Core/Qt6CoreConfigVersion.cmake:
-
-D:/Qt/6.8.3/mingw_64/include/QtCore/qtaggedpointer.h:
 
 C:/msys64/mingw64/include/c++/13.1.0/bits/basic_ios.h:
 
@@ -822,9 +814,9 @@ C:/msys64/mingw64/include/c++/13.1.0/bits/exception.h:
 
 D:/Program\ Files/CMake/share/cmake-4.0/Modules/FindThreads.cmake:
 
-D:/Qt/6.8.3/mingw_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsDependencies.cmake:
-
 C:/msys64/mingw64/include/c++/13.1.0/tr1/modified_bessel_func.tcc:
+
+D:/Qt/6.8.3/mingw_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsDependencies.cmake:
 
 C:/msys64/mingw64/include/c++/13.1.0/bits/exception_defines.h:
 
@@ -862,13 +854,13 @@ C:/msys64/mingw64/include/c++/13.1.0/bits/istream.tcc:
 
 C:/msys64/mingw64/include/c++/13.1.0/typeinfo:
 
-D:/Qt/6.8.3/mingw_64/include/QtCore/qfloat16.h:
-
-D:/Qt/6.8.3/mingw_64/include/QtCore/qtdeprecationmarkers.h:
+C:/msys64/mingw64/include/c++/13.1.0/bits/move.h:
 
 D:/Qt/6.8.3/mingw_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfigVersion.cmake:
 
-C:/msys64/mingw64/include/c++/13.1.0/bits/move.h:
+D:/Qt/6.8.3/mingw_64/include/QtCore/qfloat16.h:
+
+D:/Qt/6.8.3/mingw_64/include/QtCore/qtdeprecationmarkers.h:
 
 C:/msys64/mingw64/include/c++/13.1.0/bits/locale_facets.h:
 
@@ -884,8 +876,6 @@ C:/msys64/mingw64/include/c++/13.1.0/bits/memory_resource.h:
 
 C:/msys64/mingw64/include/c++/13.1.0/bits/nested_exception.h:
 
-C:/msys64/mingw64/include/c++/13.1.0/bits/node_handle.h:
-
 C:/msys64/mingw64/include/c++/13.1.0/bits/ostream.tcc:
 
 C:/msys64/mingw64/include/c++/13.1.0/bits/ostream_insert.h:
@@ -899,6 +889,8 @@ C:/msys64/mingw64/include/c++/13.1.0/istream:
 C:/msys64/mingw64/include/c++/13.1.0/bits/postypes.h:
 
 C:/msys64/mingw64/include/c++/13.1.0/bits/predefined_ops.h:
+
+D:/terrain_tools/Generator/FileConverter/fileconverter.h:
 
 C:/msys64/mingw64/include/c++/13.1.0/tr1/hypergeometric.tcc:
 
@@ -926,6 +918,12 @@ C:/msys64/mingw64/include/c++/13.1.0/bits/ranges_base.h:
 
 C:/msys64/mingw64/include/string.h:
 
+C:/msys64/mingw64/include/c++/13.1.0/bits/ranges_cmp.h:
+
+D:/Qt/6.8.3/mingw_64/lib/cmake/Qt6Core/Qt6CoreConfigVersion.cmake:
+
+D:/Qt/6.8.3/mingw_64/include/QtCore/qtaggedpointer.h:
+
 D:/terrain_tools/Generator/Generator/terrain.h:
 
 C:/msys64/mingw64/include/c++/13.1.0/bits/ranges_uninitialized.h:
@@ -939,10 +937,6 @@ C:/msys64/mingw64/include/c++/13.1.0/bits/refwrap.h:
 D:/Qt/6.8.3/mingw_64/lib/cmake/Qt6GuiTools/Qt6GuiToolsDependencies.cmake:
 
 C:/msys64/mingw64/include/c++/13.1.0/bits/requires_hosted.h:
-
-C:/msys64/mingw64/include/c++/13.1.0/bits/semaphore_base.h:
-
-C:/msys64/mingw64/include/c++/13.1.0/x86_64-w64-mingw32/bits/c++allocator.h:
 
 C:/msys64/mingw64/include/c++/13.1.0/bits/shared_ptr.h:
 
@@ -973,12 +967,6 @@ D:/Qt/6.8.3/mingw_64/lib/cmake/Qt6/FindWrapVulkanHeaders.cmake:
 C:/msys64/mingw64/include/c++/13.1.0/bits/std_function.h:
 
 C:/msys64/mingw64/include/c++/13.1.0/bits/std_mutex.h:
-
-C:/msys64/mingw64/include/c++/13.1.0/bits/std_thread.h:
-
-C:/msys64/mingw64/include/c++/13.1.0/ext/string_conversions.h:
-
-D:/Qt/6.8.3/mingw_64/lib/cmake/Qt6/QtPublicSbomSystemDepHelpers.cmake:
 
 C:/msys64/mingw64/include/c++/13.1.0/bits/stl_construct.h:
 
@@ -1068,25 +1056,15 @@ D:/Qt/6.8.3/mingw_64/include/QtCore/qrect.h:
 
 CMakeFiles/4.0.0-rc5/CMakeCXXCompiler.cmake:
 
-D:/Qt/6.8.3/mingw_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfigVersionImpl.cmake:
-
 C:/msys64/mingw64/include/c++/13.1.0/bits/string_view.tcc:
+
+D:/Qt/6.8.3/mingw_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfigVersionImpl.cmake:
 
 D:/Qt/6.8.3/mingw_64/lib/cmake/Qt6/QtPublicSbomPythonHelpers.cmake:
 
 C:/msys64/mingw64/include/c++/13.1.0/bits/stringfwd.h:
 
 D:/Qt/6.8.3/mingw_64/include/QtCore/qiterator.h:
-
-C:/msys64/mingw64/include/c++/13.1.0/bits/this_thread_sleep.h:
-
-D:/Qt/6.8.3/mingw_64/include/QtGui/qwindowdefs_win.h:
-
-D:/Qt/6.8.3/mingw_64/lib/cmake/Qt6Widgets/Qt6WidgetsTargets.cmake:
-
-D:/Qt/6.8.3/mingw_64/include/QtCore/qbytearraylist.h:
-
-D:/Qt/6.8.3/mingw_64/include/QtCore/qstringconverter_base.h:
 
 C:/msys64/mingw64/include/c++/13.1.0/bits/uniform_int_dist.h:
 
@@ -1146,6 +1124,8 @@ C:/msys64/mingw64/include/c++/13.1.0/concepts:
 
 D:/Qt/6.8.3/mingw_64/include/QtGui/qtguiexports.h:
 
+D:/Qt/6.8.3/mingw_64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointMinGW32Target.cmake:
+
 C:/msys64/mingw64/include/c++/13.1.0/cstddef:
 
 C:/msys64/mingw64/include/c++/13.1.0/cstdint:
@@ -1163,8 +1143,6 @@ C:/msys64/mingw64/include/c++/13.1.0/cstdlib:
 C:/msys64/mingw64/include/c++/13.1.0/cstring:
 
 C:/msys64/mingw64/include/c++/13.1.0/optional:
-
-C:/msys64/mingw64/include/semaphore.h:
 
 C:/msys64/mingw64/include/pthread_unistd.h:
 
@@ -1192,7 +1170,9 @@ C:/msys64/mingw64/include/c++/13.1.0/initializer_list:
 
 C:/msys64/mingw64/include/c++/13.1.0/ext/numeric_traits.h:
 
-C:/msys64/mingw64/include/c++/13.1.0/stop_token:
+C:/msys64/mingw64/include/c++/13.1.0/ext/string_conversions.h:
+
+D:/Qt/6.8.3/mingw_64/lib/cmake/Qt6/QtPublicSbomSystemDepHelpers.cmake:
 
 C:/msys64/mingw64/include/c++/13.1.0/ext/type_traits.h:
 
@@ -1256,12 +1236,6 @@ C:/msys64/mingw64/include/c++/13.1.0/random:
 
 C:/msys64/mingw64/include/c++/13.1.0/ratio:
 
-C:/msys64/mingw64/include/c++/13.1.0/semaphore:
-
-D:/Qt/6.8.3/mingw_64/lib/cmake/Qt6Core/Qt6CoreTargets.cmake:
-
-D:/Qt/6.8.3/mingw_64/include/QtWidgets/qmainwindow.h:
-
 C:/msys64/mingw64/include/c++/13.1.0/span:
 
 C:/msys64/mingw64/include/c++/13.1.0/sstream:
@@ -1287,10 +1261,6 @@ C:/msys64/mingw64/include/c++/13.1.0/string_view:
 C:/msys64/mingw64/include/c++/13.1.0/system_error:
 
 D:/Qt/6.8.3/mingw_64/include/QtCore/qbytearray.h:
-
-C:/msys64/mingw64/include/c++/13.1.0/thread:
-
-D:/Qt/6.8.3/mingw_64/include/QtGui/qpalette.h:
 
 D:/Qt/6.8.3/mingw_64/lib/cmake/Qt6Gui/Qt6QWindowsIntegrationPluginTargets-relwithdebinfo.cmake:
 
@@ -1319,6 +1289,8 @@ C:/msys64/mingw64/include/c++/13.1.0/utility:
 C:/msys64/mingw64/include/c++/13.1.0/variant:
 
 C:/msys64/mingw64/include/c++/13.1.0/vector:
+
+C:/msys64/mingw64/include/c++/13.1.0/x86_64-w64-mingw32/bits/c++allocator.h:
 
 C:/msys64/mingw64/include/c++/13.1.0/x86_64-w64-mingw32/bits/c++config.h:
 
@@ -1544,6 +1516,14 @@ D:/Qt/6.8.3/mingw_64/include/QtCore/qbindingstorage.h:
 
 D:/Qt/6.8.3/mingw_64/include/QtCore/qbytearrayalgorithms.h:
 
+D:/Qt/6.8.3/mingw_64/include/QtGui/qwindowdefs_win.h:
+
+D:/Qt/6.8.3/mingw_64/lib/cmake/Qt6Widgets/Qt6WidgetsTargets.cmake:
+
+D:/Qt/6.8.3/mingw_64/include/QtCore/qbytearraylist.h:
+
+D:/Qt/6.8.3/mingw_64/include/QtCore/qstringconverter_base.h:
+
 D:/Qt/6.8.3/mingw_64/include/QtCore/qbytearrayview.h:
 
 D:/Qt/6.8.3/mingw_64/include/QtCore/qchar.h:
@@ -1668,9 +1648,9 @@ D:/Qt/6.8.3/mingw_64/include/QtCore/qtresource.h:
 
 D:/Qt/6.8.3/mingw_64/include/QtCore/qttranslation.h:
 
-D:/Qt/6.8.3/mingw_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsTargets.cmake:
-
 D:/Qt/6.8.3/mingw_64/include/QtCore/qttypetraits.h:
+
+D:/Qt/6.8.3/mingw_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsTargets.cmake:
 
 D:/Qt/6.8.3/mingw_64/include/QtCore/qtversion.h:
 
@@ -1684,6 +1664,8 @@ D:/Qt/6.8.3/mingw_64/include/QtCore/qversiontagging.h:
 
 D:/Qt/6.8.3/mingw_64/include/QtCore/qxptype_traits.h:
 
+D:/terrain_tools/Generator/FileConverter/fileconverter.cpp:
+
 D:/Qt/6.8.3/mingw_64/include/QtCore/qyieldcpu.h:
 
 D:/Qt/6.8.3/mingw_64/include/QtGui/qbrush.h:
@@ -1695,6 +1677,8 @@ D:/Qt/6.8.3/mingw_64/include/QtGui/qcursor.h:
 D:/Qt/6.8.3/mingw_64/include/QtGui/qicon.h:
 
 D:/Qt/6.8.3/mingw_64/include/QtGui/qkeysequence.h:
+
+D:/Qt/6.8.3/mingw_64/include/QtGui/qpalette.h:
 
 D:/Qt/6.8.3/mingw_64/include/QtGui/qpixelformat.h:
 
@@ -1711,6 +1695,10 @@ D:/Qt/6.8.3/mingw_64/include/QtGui/qtguiglobal.h:
 D:/Qt/6.8.3/mingw_64/include/QtGui/qwindowdefs.h:
 
 D:/Qt/6.8.3/mingw_64/include/QtWidgets/QMainWindow:
+
+D:/Qt/6.8.3/mingw_64/lib/cmake/Qt6Core/Qt6CoreTargets.cmake:
+
+D:/Qt/6.8.3/mingw_64/include/QtWidgets/qmainwindow.h:
 
 D:/Qt/6.8.3/mingw_64/lib/cmake/Qt6/FindWrapAtomic.cmake:
 
@@ -1756,11 +1744,7 @@ D:/Qt/6.8.3/mingw_64/lib/cmake/Qt6Core/Qt6CoreMacros.cmake:
 
 D:/Qt/6.8.3/mingw_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsAdditionalTargetInfo.cmake:
 
-D:/Qt/6.8.3/mingw_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsTargets-relwithdebinfo.cmake:
-
 D:/Qt/6.8.3/mingw_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsVersionlessTargets.cmake:
-
-D:/Qt/6.8.3/mingw_64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointMinGW32Target.cmake:
 
 D:/Qt/6.8.3/mingw_64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateAdditionalTargetInfo.cmake:
 
@@ -1879,6 +1863,10 @@ D:/Qt/6.8.3/mingw_64/lib/cmake/Qt6ZlibPrivate/Qt6ZlibPrivateConfig.cmake:
 D:/Qt/6.8.3/mingw_64/lib/cmake/Qt6ZlibPrivate/Qt6ZlibPrivateConfigVersion.cmake:
 
 D:/Qt/6.8.3/mingw_64/lib/cmake/Qt6ZlibPrivate/Qt6ZlibPrivateTargets.cmake:
+
+D:/terrain_tools/Generator/FileConverter/huffmancompressor.cpp:
+
+D:/terrain_tools/Generator/FileConverter/huffmancompressor.h:
 
 D:/terrain_tools/Generator/Generator/heightmap.h:
 

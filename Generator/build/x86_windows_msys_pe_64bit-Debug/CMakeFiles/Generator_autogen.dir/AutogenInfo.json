@@ -309,6 +309,18 @@
 	"HEADERS" : 
 	[
 		[
+			"D:/terrain_tools/Generator/FileConverter/fileconverter.h",
+			"MU",
+			"OLKJ42FLXK/moc_fileconverter.cpp",
+			null
+		],
+		[
+			"D:/terrain_tools/Generator/FileConverter/huffmancompressor.h",
+			"MU",
+			"OLKJ42FLXK/moc_huffmancompressor.cpp",
+			null
+		],
+		[
 			"D:/terrain_tools/Generator/Generator/heightmap.h",
 			"MU",
 			"IPEDGA4IE7/moc_heightmap.cpp",
@@ -422,6 +434,16 @@
 	"SETTINGS_FILE" : "D:/terrain_tools/Generator/build/x86_windows_msys_pe_64bit-Debug/CMakeFiles/Generator_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
+		[
+			"D:/terrain_tools/Generator/FileConverter/fileconverter.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/terrain_tools/Generator/FileConverter/huffmancompressor.cpp",
+			"MU",
+			null
+		],
 		[ "D:/terrain_tools/Generator/Generator/perlinnoise.cpp", "MU", null ],
 		[ "D:/terrain_tools/Generator/Generator/terrain.cpp", "MU", null ],
 		[

@@ -183,6 +183,36 @@ CMakeFiles/Generator.dir/ImageGenerator/imagegenerator.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Generator.dir/ImageGenerator/imagegenerator.cpp.s"
 	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\terrain_tools\Generator\ImageGenerator\imagegenerator.cpp -o CMakeFiles\Generator.dir\ImageGenerator\imagegenerator.cpp.s
 
+CMakeFiles/Generator.dir/FileConverter/fileconverter.cpp.obj: CMakeFiles/Generator.dir/flags.make
+CMakeFiles/Generator.dir/FileConverter/fileconverter.cpp.obj: CMakeFiles/Generator.dir/includes_CXX.rsp
+CMakeFiles/Generator.dir/FileConverter/fileconverter.cpp.obj: D:/terrain_tools/Generator/FileConverter/fileconverter.cpp
+CMakeFiles/Generator.dir/FileConverter/fileconverter.cpp.obj: CMakeFiles/Generator.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\terrain_tools\Generator\build\x86_windows_msys_pe_64bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Generator.dir/FileConverter/fileconverter.cpp.obj"
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Generator.dir/FileConverter/fileconverter.cpp.obj -MF CMakeFiles\Generator.dir\FileConverter\fileconverter.cpp.obj.d -o CMakeFiles\Generator.dir\FileConverter\fileconverter.cpp.obj -c D:\terrain_tools\Generator\FileConverter\fileconverter.cpp
+
+CMakeFiles/Generator.dir/FileConverter/fileconverter.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Generator.dir/FileConverter/fileconverter.cpp.i"
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\terrain_tools\Generator\FileConverter\fileconverter.cpp > CMakeFiles\Generator.dir\FileConverter\fileconverter.cpp.i
+
+CMakeFiles/Generator.dir/FileConverter/fileconverter.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Generator.dir/FileConverter/fileconverter.cpp.s"
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\terrain_tools\Generator\FileConverter\fileconverter.cpp -o CMakeFiles\Generator.dir\FileConverter\fileconverter.cpp.s
+
+CMakeFiles/Generator.dir/FileConverter/huffmancompressor.cpp.obj: CMakeFiles/Generator.dir/flags.make
+CMakeFiles/Generator.dir/FileConverter/huffmancompressor.cpp.obj: CMakeFiles/Generator.dir/includes_CXX.rsp
+CMakeFiles/Generator.dir/FileConverter/huffmancompressor.cpp.obj: D:/terrain_tools/Generator/FileConverter/huffmancompressor.cpp
+CMakeFiles/Generator.dir/FileConverter/huffmancompressor.cpp.obj: CMakeFiles/Generator.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\terrain_tools\Generator\build\x86_windows_msys_pe_64bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Generator.dir/FileConverter/huffmancompressor.cpp.obj"
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Generator.dir/FileConverter/huffmancompressor.cpp.obj -MF CMakeFiles\Generator.dir\FileConverter\huffmancompressor.cpp.obj.d -o CMakeFiles\Generator.dir\FileConverter\huffmancompressor.cpp.obj -c D:\terrain_tools\Generator\FileConverter\huffmancompressor.cpp
+
+CMakeFiles/Generator.dir/FileConverter/huffmancompressor.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Generator.dir/FileConverter/huffmancompressor.cpp.i"
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\terrain_tools\Generator\FileConverter\huffmancompressor.cpp > CMakeFiles\Generator.dir\FileConverter\huffmancompressor.cpp.i
+
+CMakeFiles/Generator.dir/FileConverter/huffmancompressor.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Generator.dir/FileConverter/huffmancompressor.cpp.s"
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\terrain_tools\Generator\FileConverter\huffmancompressor.cpp -o CMakeFiles\Generator.dir\FileConverter\huffmancompressor.cpp.s
+
 # Object files for target Generator
 Generator_OBJECTS = \
 "CMakeFiles/Generator.dir/Generator_autogen/mocs_compilation.cpp.obj" \
@@ -191,7 +221,9 @@ Generator_OBJECTS = \
 "CMakeFiles/Generator.dir/Generator/terraingenerator.cpp.obj" \
 "CMakeFiles/Generator.dir/Generator/perlinnoise.cpp.obj" \
 "CMakeFiles/Generator.dir/Generator/terrain.cpp.obj" \
-"CMakeFiles/Generator.dir/ImageGenerator/imagegenerator.cpp.obj"
+"CMakeFiles/Generator.dir/ImageGenerator/imagegenerator.cpp.obj" \
+"CMakeFiles/Generator.dir/FileConverter/fileconverter.cpp.obj" \
+"CMakeFiles/Generator.dir/FileConverter/huffmancompressor.cpp.obj"
 
 # External object files for target Generator
 Generator_EXTERNAL_OBJECTS =
@@ -203,6 +235,8 @@ Generator.exe: CMakeFiles/Generator.dir/Generator/terraingenerator.cpp.obj
 Generator.exe: CMakeFiles/Generator.dir/Generator/perlinnoise.cpp.obj
 Generator.exe: CMakeFiles/Generator.dir/Generator/terrain.cpp.obj
 Generator.exe: CMakeFiles/Generator.dir/ImageGenerator/imagegenerator.cpp.obj
+Generator.exe: CMakeFiles/Generator.dir/FileConverter/fileconverter.cpp.obj
+Generator.exe: CMakeFiles/Generator.dir/FileConverter/huffmancompressor.cpp.obj
 Generator.exe: CMakeFiles/Generator.dir/build.make
 Generator.exe: D:/Qt/6.8.3/mingw_64/lib/libQt6Widgets.a
 Generator.exe: D:/Qt/6.8.3/mingw_64/lib/libQt6Gui.a
@@ -211,7 +245,7 @@ Generator.exe: D:/Qt/6.8.3/mingw_64/lib/libQt6EntryPoint.a
 Generator.exe: CMakeFiles/Generator.dir/linkLibs.rsp
 Generator.exe: CMakeFiles/Generator.dir/objects1.rsp
 Generator.exe: CMakeFiles/Generator.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=D:\terrain_tools\Generator\build\x86_windows_msys_pe_64bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable Generator.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=D:\terrain_tools\Generator\build\x86_windows_msys_pe_64bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable Generator.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\Generator.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

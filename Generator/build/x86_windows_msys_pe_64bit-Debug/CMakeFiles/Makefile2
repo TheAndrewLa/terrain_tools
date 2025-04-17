@@ -83,16 +83,16 @@ clean: CMakeFiles/Generator_autogen.dir/clean
 # Target rules for target CMakeFiles/Generator.dir
 
 # All Build rule for target.
-CMakeFiles/Generator.dir/all: CMakeFiles/Generator_autogen_timestamp_deps.dir/all
 CMakeFiles/Generator.dir/all: CMakeFiles/Generator_autogen.dir/all
+CMakeFiles/Generator.dir/all: CMakeFiles/Generator_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Generator.dir\build.make CMakeFiles/Generator.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Generator.dir\build.make CMakeFiles/Generator.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=D:\terrain_tools\Generator\build\x86_windows_msys_pe_64bit-Debug\CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9 "Built target Generator"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=D:\terrain_tools\Generator\build\x86_windows_msys_pe_64bit-Debug\CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11 "Built target Generator"
 .PHONY : CMakeFiles/Generator.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Generator.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\terrain_tools\Generator\build\x86_windows_msys_pe_64bit-Debug\CMakeFiles 10
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\terrain_tools\Generator\build\x86_windows_msys_pe_64bit-Debug\CMakeFiles 12
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/Generator.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start D:\terrain_tools\Generator\build\x86_windows_msys_pe_64bit-Debug\CMakeFiles 0
 .PHONY : CMakeFiles/Generator.dir/rule
@@ -102,10 +102,10 @@ Generator: CMakeFiles/Generator.dir/rule
 .PHONY : Generator
 
 # codegen rule for target.
-CMakeFiles/Generator.dir/codegen: CMakeFiles/Generator_autogen_timestamp_deps.dir/all
 CMakeFiles/Generator.dir/codegen: CMakeFiles/Generator_autogen.dir/all
+CMakeFiles/Generator.dir/codegen: CMakeFiles/Generator_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Generator.dir\build.make CMakeFiles/Generator.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=D:\terrain_tools\Generator\build\x86_windows_msys_pe_64bit-Debug\CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9 "Finished codegen for target Generator"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=D:\terrain_tools\Generator\build\x86_windows_msys_pe_64bit-Debug\CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11 "Finished codegen for target Generator"
 .PHONY : CMakeFiles/Generator.dir/codegen
 
 # clean rule for target.
@@ -152,7 +152,7 @@ CMakeFiles/Generator_autogen_timestamp_deps.dir/clean:
 CMakeFiles/Generator_autogen.dir/all: CMakeFiles/Generator_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Generator_autogen.dir\build.make CMakeFiles/Generator_autogen.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Generator_autogen.dir\build.make CMakeFiles/Generator_autogen.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=D:\terrain_tools\Generator\build\x86_windows_msys_pe_64bit-Debug\CMakeFiles --progress-num=10 "Built target Generator_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=D:\terrain_tools\Generator\build\x86_windows_msys_pe_64bit-Debug\CMakeFiles --progress-num=12 "Built target Generator_autogen"
 .PHONY : CMakeFiles/Generator_autogen.dir/all
 
 # Build rule for subdir invocation for target.
@@ -169,7 +169,7 @@ Generator_autogen: CMakeFiles/Generator_autogen.dir/rule
 # codegen rule for target.
 CMakeFiles/Generator_autogen.dir/codegen: CMakeFiles/Generator_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Generator_autogen.dir\build.make CMakeFiles/Generator_autogen.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=D:\terrain_tools\Generator\build\x86_windows_msys_pe_64bit-Debug\CMakeFiles --progress-num=10 "Finished codegen for target Generator_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=D:\terrain_tools\Generator\build\x86_windows_msys_pe_64bit-Debug\CMakeFiles --progress-num=12 "Finished codegen for target Generator_autogen"
 .PHONY : CMakeFiles/Generator_autogen.dir/codegen
 
 # clean rule for target.

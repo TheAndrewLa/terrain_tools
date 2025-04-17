@@ -55,6 +55,7 @@ public:
     QSlider *angleHS;
     QLabel *angleL;
     QLineEdit *angleLE;
+    QLabel *label;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -62,7 +63,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(1010, 742);
+        MainWindow->resize(1039, 788);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
         randomPB = new QPushButton(centralwidget);
@@ -86,7 +87,7 @@ public:
         generatePB->setGeometry(QRect(20, 600, 111, 41));
         graphicsView = new QGraphicsView(centralwidget);
         graphicsView->setObjectName("graphicsView");
-        graphicsView->setGeometry(QRect(360, 220, 601, 421));
+        graphicsView->setGeometry(QRect(410, 140, 541, 541));
         widthL = new QLabel(centralwidget);
         widthL->setObjectName("widthL");
         widthL->setGeometry(QRect(20, 260, 63, 20));
@@ -104,11 +105,13 @@ public:
         widthSB->setGeometry(QRect(100, 260, 141, 26));
         widthSB->setMinimum(1);
         widthSB->setMaximum(4097);
+        widthSB->setValue(512);
         heightSB = new QSpinBox(centralwidget);
         heightSB->setObjectName("heightSB");
         heightSB->setGeometry(QRect(100, 300, 141, 26));
         heightSB->setMinimum(1);
         heightSB->setMaximum(4097);
+        heightSB->setValue(512);
         xCenterL = new QLabel(centralwidget);
         xCenterL->setObjectName("xCenterL");
         xCenterL->setGeometry(QRect(100, 340, 21, 20));
@@ -119,7 +122,7 @@ public:
         octavesSB->setObjectName("octavesSB");
         octavesSB->setGeometry(QRect(100, 500, 141, 26));
         octavesSB->setMinimum(1);
-        octavesSB->setMaximum(10);
+        octavesSB->setMaximum(5);
         editOtavesPB = new QPushButton(centralwidget);
         editOtavesPB->setObjectName("editOtavesPB");
         editOtavesPB->setGeometry(QRect(260, 500, 93, 29));
@@ -141,7 +144,7 @@ public:
         centerYSB->setMaximum(65536);
         outputL = new QLabel(centralwidget);
         outputL->setObjectName("outputL");
-        outputL->setGeometry(QRect(410, 70, 321, 221));
+        outputL->setGeometry(QRect(620, 60, 321, 81));
         outputL->setScaledContents(true);
         imagePB = new QPushButton(centralwidget);
         imagePB->setObjectName("imagePB");
@@ -149,7 +152,7 @@ public:
         amplitudeHS = new QSlider(centralwidget);
         amplitudeHS->setObjectName("amplitudeHS");
         amplitudeHS->setGeometry(QRect(188, 540, 160, 22));
-        amplitudeHS->setMaximum(6600);
+        amplitudeHS->setMaximum(500);
         amplitudeHS->setSingleStep(1);
         amplitudeHS->setValue(100);
         amplitudeHS->setOrientation(Qt::Orientation::Horizontal);
@@ -173,10 +176,13 @@ public:
         angleLE->setGeometry(QRect(100, 460, 81, 26));
         angleLE->setMaxLength(32767);
         angleLE->setReadOnly(true);
+        label = new QLabel(centralwidget);
+        label->setObjectName("label");
+        label->setGeometry(QRect(520, 90, 63, 20));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 1010, 26));
+        menubar->setGeometry(QRect(0, 0, 1039, 26));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName("statusbar");
@@ -202,13 +208,14 @@ public:
         xCenterL->setText(QCoreApplication::translate("MainWindow", "x:", nullptr));
         yCenterL->setText(QCoreApplication::translate("MainWindow", "y:", nullptr));
         editOtavesPB->setText(QCoreApplication::translate("MainWindow", "Edit", nullptr));
-        outputL->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
+        outputL->setText(QCoreApplication::translate("MainWindow", "no map", nullptr));
         imagePB->setText(QCoreApplication::translate("MainWindow", "Export png", nullptr));
         amplitudeLE->setInputMask(QString());
         amplitudeLE->setText(QCoreApplication::translate("MainWindow", "1", nullptr));
         angleL->setText(QCoreApplication::translate("MainWindow", "Angle:", nullptr));
         angleLE->setInputMask(QString());
         angleLE->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
+        label->setText(QCoreApplication::translate("MainWindow", "Status:", nullptr));
     } // retranslateUi
 
 };
