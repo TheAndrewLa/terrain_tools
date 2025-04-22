@@ -5,7 +5,7 @@
 #include "../Types.h"
 #include "../Generator/terrain.h"
 
-using namespace ala::types;
+using namespace types;
 
 namespace terraingenerator {
     void export_png(const Terrain& terrain, const char *file_name);

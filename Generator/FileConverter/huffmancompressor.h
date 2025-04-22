@@ -3,7 +3,7 @@
 #include "../Types.h"
 #include <cstring>
 
-using namespace ala::types;
+using namespace types;
 
 namespace terraingenerator {
 class HuffmanCommpressor

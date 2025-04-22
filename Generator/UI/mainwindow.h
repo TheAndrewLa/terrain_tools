@@ -3,10 +3,10 @@
 
 #include <mutex>
 
-
 #include <QMainWindow>
 #include <QGraphicsItem>
 #include "../Generator/terraingenerator.h"
+#include "../Generator/Curve.h"
 
 
 using namespace terraingenerator;
@@ -25,6 +25,8 @@ private:
     TerrainGenerator tg_{};
     Terrain terrain_;
     HeightMap map_{};
+    Curve<double> curve_{};
+
     std::mutex mtx_image_;
     std::mutex mtx_generator_;
 
@@ -45,11 +47,11 @@ private slots:
 
     void on_imagePB_clicked();
 
-    void on_amplitudeHS_valueChanged(int value);
-
-    void on_angleHS_valueChanged(int value);
-
     void on_seedLE_textChanged(const QString &arg1);
+
+    void on_addPointPB_clicked();
+
+    void on_clearCurvePB_clicked();
 
 private:
     Ui::MainWindow *ui;

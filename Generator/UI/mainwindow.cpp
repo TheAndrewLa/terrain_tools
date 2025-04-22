@@ -1,8 +1,10 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
-#include <format>
 #include <thread>
 #include "../FileConverter/fileconverter.h"
+
+#include "../Types.h"
+using namespace types;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -23,14 +25,14 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::get_current_map() {
-    int width = ui->widthSB->value();
-    int height = ui->heightSB->value();
-    int x_center = ui->centerXSB->value();
-    int y_center = ui->centerYSB->value();
-    int scale = ui->scaleSB->value();
-    double angle = ui->angleHS->value() * 0.01;
-    double amplitude = ui->amplitudeHS->value() * 0.01;
-    int octaves = ui->octavesSB->value();
+    uint32 width = ui->widthSB->value();
+    uint32 height = ui->heightSB->value();
+    uint32 x_center = ui->centerXSB->value();
+    uint32 y_center = ui->centerYSB->value();
+    double scale = ui->scaleSB->value();
+    double angle = ui->angleSB->value();
+    double amplitude = ui->amplitudeSB->value();
+    uint32 octaves = ui->octavesSB->value();
 
     map_ = HeightMap {
         height, width, x_center, y_center,
@@ -50,7 +52,7 @@ void MainWindow::on_generatePB_clicked()
     get_current_map();
 
     std::thread th([this]{
-        terrain_ = tg_.generate(map_);
+        terrain_ = tg_.generate(map_, curve_);
         ui->outputL->setText("generated");
 
         ui->generatePB->setEnabled(true);
@@ -68,13 +70,8 @@ void MainWindow::generate_random() {
     ui->centerXSB->setValue(map_.x_offset);
     ui->centerYSB->setValue(map_.y_offset);
     ui->scaleSB->setValue(map_.scale);
-
-    ui->angleLE->setText(QString::fromStdString(std::format("{:.2f}", map_.angle)));
-    ui->angleHS->setValue(map_.angle * 100);
-
-    ui->amplitudeLE->setText(QString::fromStdString(std::format("{:.2f}", map_.amplitude)));
-    ui->amplitudeHS->setValue(map_.amplitude * 100);
-
+    ui->angleSB->setValue(map_.angle);
+    ui->amplitudeSB->setValue(map_.amplitude);
     ui->octavesSB->setValue(map_.octaves);
 }
 
@@ -106,21 +103,24 @@ void MainWindow::on_imagePB_clicked()
 }
 
 
-void MainWindow::on_amplitudeHS_valueChanged(int value)
-{
-    ui->amplitudeLE->setText(QString::fromStdString(std::format("{:.2f}", value * 0.01)));
-}
-
-
-void MainWindow::on_angleHS_valueChanged(int value)
-{
-    ui->angleLE->setText(QString::fromStdString(std::format("{:.2f}", value * 0.01)));
-}
-
-
 void MainWindow::on_seedLE_textChanged(const QString &arg1)
 {
     map_.seed = arg1.toInt();
     generate_random();
+
+}
+
+void MainWindow::on_addPointPB_clicked()
+{
+    double x = ui->curveXSB->value();
+    double y = ui->curveYSB->value();
+    curve_.add_point(x, y);
+    ui->curveOutputL->setText(QString::fromStdString(static_cast<std::string>(curve_)));
+}
+
+
+void MainWindow::on_clearCurvePB_clicked()
+{
+    curve_.clear();
 }
 

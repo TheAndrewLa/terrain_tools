@@ -4,6 +4,7 @@
 #include "perlinnoise.h"
 #include "heightmap.h"
 #include "terrain.h"
+#include "Curve.h"
 #include <random>
 #include <cmath>
 
@@ -18,7 +19,7 @@ namespace terraingenerator {
     public:
         int generate_random_seed();
         TerrainGenerator();
-        Terrain generate(HeightMap& map);
+        Terrain generate(HeightMap& map, Curve<double>& curve);
         void generate_random_map(HeightMap& map);
     };
 }

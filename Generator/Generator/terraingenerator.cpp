@@ -16,27 +16,32 @@ void TerrainGenerator::generate_random_map(HeightMap& map)
 
 TerrainGenerator::TerrainGenerator() : generator_(rd_()) {}
 
-Terrain TerrainGenerator::generate(HeightMap& map)
-{   double cos_angle = std::cos(map.angle);
-    double sin_angle = std::sin(map.angle);
+Terrain TerrainGenerator::generate(HeightMap& map, Curve<double>& curve) {
+    double radian_angle = M_PI * map.angle / 180;
+    double cos_angle = std::cos(radian_angle);
+    double sin_angle = std::sin(radian_angle);
 
     Terrain terrain{map.height, map.width};
 
-    double x_offset = map.height * sqrt(2) + map.x_offset;
-    double y_offset = map.width * sqrt(2) + map.x_offset;
+    double offset = sqrt(map.height * map.height + map.width * map.width);
+    double x_center = offset + map.height / 2;
+    double y_center = offset + map.width / 2;
 
-    for (int x = 0; x < map.height; ++x) {
-        for (int y = 0; y < map.width; ++y) {
-            double xx = x + x_offset;
-            double yy = y + y_offset;
+    for (size_t x = 0; x < map.height; ++x) {
+        for (size_t y = 0; y < map.width; ++y) {
+            double xx = x + offset;
+            double yy = y + offset;
 
-            double nx = x_offset + (xx - x_offset) * cos_angle - (yy - y_offset) * sin_angle;
-            double ny = y_offset + (xx - x_offset) * sin_angle + (yy - y_offset) * cos_angle;
+            double nx = map.x_offset + x_center + (xx - x_center) * cos_angle - (yy - y_center) * sin_angle;
+            double ny = map.y_offset + y_center + (xx - x_center) * sin_angle + (yy - y_center) * cos_angle;
 
             nx = nx / map.scale;
             ny = ny / map.scale;
 
-            terrain[x][y] = static_cast<uchar>(noise_.noise2D(nx, ny, map.octaves, map.amplitude) * 255);
+            double e = noise_.noise2D(nx, ny, map.octaves, map.amplitude);
+            e = curve.calculate(e);
+            terrain[x][y] = static_cast<uchar>(e * 255);
+
         }
     }
     return terrain;

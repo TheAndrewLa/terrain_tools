@@ -5,7 +5,7 @@
 #include <string>
 #include "../Types.h"
 
-using namespace ala::types;
+using namespace types;
 
 namespace terraingenerator {
     class Terrain
@@ -24,20 +24,20 @@ namespace terraingenerator {
 
         friend void export_png(const Terrain& terrain, const char *file_name);
     private:
-        int width_;
-        int height_;
-        uchar* heightmap_;
+        uint32 width_;
+        uint32 height_;
+        uchar* heightmap_ = nullptr;
         void deleteHeightMap();
 
     public:
         Terrain();
-        Terrain(int width, int height);
-        Terrain(int width, int height, uchar* map);
+        Terrain(uint32 width, uint32 height);
+        Terrain(uint32 width, uint32 height, uchar* map);
         Terrain(const Terrain& other) = delete;
         Terrain& operator=(const Terrain& other) = delete;
         Terrain(Terrain&& other);
-        int width() const;
-        int height() const;
+        uint32 width() const;
+        uint32 height() const;
         Terrain& operator=(Terrain&& other);
         operator std::string();
         Array operator[](usize x) const;
