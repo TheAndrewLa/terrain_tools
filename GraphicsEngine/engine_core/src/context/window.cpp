@@ -1,4 +1,4 @@
-#include <wnd/window.hpp>
+#include <context/window.hpp>
 
 #include <cassert>
 
@@ -9,17 +9,17 @@ namespace ala::wnd {
 
 window::window(GLFWwindow* window) : hwnd_(window) {}
 
-void window::ref_deleter_t::operator()(window* hwnd) {
+void window::glfw_window_deleter::operator()(window* hwnd) {
   glfwDestroyWindow(hwnd->hwnd_);
   delete hwnd;
 }
 
-void window::ref_deleter_t::operator()(const window* hwnd) {
+void window::glfw_window_deleter::operator()(const window* hwnd) {
   glfwDestroyWindow(hwnd->hwnd_);
   delete hwnd;
 }
 
-window::ref_t window::create(const title_t& title, monitor::ref_t parent_monitor) {
+shared_ptr<window> window::create(const std::string& title, shared_ptr<monitor> parent_monitor) {
   monitor::video_mode mode = parent_monitor->get_video_mode();
 
   glfwWindowHint(GLFW_RED_BITS, mode.red_bits);
@@ -29,16 +29,14 @@ window::ref_t window::create(const title_t& title, monitor::ref_t parent_monitor
   auto* hwnd = glfwCreateWindow(100, 100, title.c_str(), nullptr, nullptr);
   assert(hwnd != nullptr);
 
-  glfwSetWindowMonitor(hwnd, parent_monitor->get_handle(), 0, 0, mode.width, mode.height,
-                       mode.refresh_rate);
+  glfwSetWindowMonitor(hwnd, parent_monitor->get_handle(), 0, 0, mode.width, mode.height, mode.refresh_rate);
 
   glfwShowWindow(hwnd);
 
-  return ref_t(new window(hwnd), ref_deleter_t{});
+  return shared_ptr<window>(new window(hwnd), glfw_window_deleter{});
 }
 
-window::ref_t window::create(const title_t& title, types::int32 width,
-                             types::int32 height) {
+shared_ptr<window> window::create(const std::string& title, types::int32 width, types::int32 height) {
   monitor::video_mode mode = monitor::get_primary()->get_video_mode();
 
   glfwWindowHint(GLFW_RED_BITS, mode.red_bits);
@@ -54,7 +52,7 @@ window::ref_t window::create(const title_t& title, types::int32 width,
 
   glfwShowWindow(hwnd);
 
-  return ref_t(new window(hwnd), ref_deleter_t{});
+  return shared_ptr<window>(new window(hwnd), glfw_window_deleter{});
 }
 
 void window::enable_cursor() {
