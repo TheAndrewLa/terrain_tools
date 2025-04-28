@@ -1,9 +1,10 @@
 #ifndef ENGINE_CORE_MATH_MATRIX_H
 #define ENGINE_CORE_MATH_MATRIX_H
 
-#include "../types.hpp"
-#include "utils.hpp"
-#include "vector.hpp"
+#include <math/utils.hpp>
+#include <math/vector.hpp>
+
+#include <types.hpp>
 
 namespace ala::math {
 
@@ -46,11 +47,9 @@ struct tmat2x2 {
   constexpr tmat2x2(const row_t& diagonal) noexcept
       : rows_({row_t(diagonal[0], zero), row_t(zero, diagonal[1])}) {}
 
-  constexpr tmat2x2(value_t d1, value_t d2) noexcept
-      : rows_({row_t(d1, zero), row_t(zero, d2)}) {}
+  constexpr tmat2x2(value_t d1, value_t d2) noexcept : rows_({row_t(d1, zero), row_t(zero, d2)}) {}
 
-  constexpr tmat2x2(const row_t& row1, const row_t& row2) noexcept
-      : rows_({row1, row2}) {}
+  constexpr tmat2x2(const row_t& row1, const row_t& row2) noexcept : rows_({row1, row2}) {}
 
   static tmat2x2 get_identity() noexcept { return tmat2x2(static_cast<value_t>(1)); }
 
@@ -74,8 +73,7 @@ struct tmat2x2 {
 
   tmat2x2& assign(index_t index, value_t value) {
     if (index.first >= 2 || index.second >= 2) {
-      throw std::out_of_range(
-          "Each component of tmat2x2's index should be less than 2!");
+      throw std::out_of_range("Each component of tmat2x2's index should be less than 2!");
     }
 
     rows_[index.first][index.second] = value;
@@ -85,8 +83,7 @@ struct tmat2x2 {
 
   value_t& at(index_t index) {
     if (index.first >= 2 || index.second >= 2) {
-      throw std::out_of_range(
-          "Each component of tmat2x2's index should be less than 2!");
+      throw std::out_of_range("Each component of tmat2x2's index should be less than 2!");
     }
 
     return rows_[index.first][index.second];
@@ -94,8 +91,7 @@ struct tmat2x2 {
 
   const value_t& at(index_t index) const {
     if (index.first >= 2 || index.second >= 2) {
-      throw std::out_of_range(
-          "Each component of tmat2x2's index should be less than 2!");
+      throw std::out_of_range("Each component of tmat2x2's index should be less than 2!");
     }
 
     return rows_[index.first][index.second];
@@ -103,9 +99,7 @@ struct tmat2x2 {
 
   constexpr row_t& operator[](row_index_t index) noexcept { return rows_[index]; }
 
-  constexpr const row_t& operator[](row_index_t index) const noexcept {
-    return rows_[index];
-  }
+  constexpr const row_t& operator[](row_index_t index) const noexcept { return rows_[index]; }
 
   constexpr bool operator==(const tmat2x2& other) const noexcept {
     return (other.rows_[0] == rows_[0]) && (other.rows_[1] == rows_[1]);
@@ -217,8 +211,7 @@ struct tmat3x3 {
 
   tmat3x3& assign(index_t index, value_t value) {
     if (index.first >= 3 || index.second >= 3) {
-      throw std::out_of_range(
-          "Each component of tmat3x3's index should be less than 2!");
+      throw std::out_of_range("Each component of tmat3x3's index should be less than 2!");
     }
 
     rows_[index.first][index.second] = value;
@@ -228,8 +221,7 @@ struct tmat3x3 {
 
   value_t& at(index_t index) {
     if (index.first >= 3 || index.second >= 3) {
-      throw std::out_of_range(
-          "Each component of tmat3x3's index should be less than 2!");
+      throw std::out_of_range("Each component of tmat3x3's index should be less than 2!");
     }
 
     return rows_[index.first][index.second];
@@ -237,8 +229,7 @@ struct tmat3x3 {
 
   const value_t& at(index_t index) const {
     if (index.first >= 3 || index.second >= 3) {
-      throw std::out_of_range(
-          "Each component of tmat3x3's index should be less than 2!");
+      throw std::out_of_range("Each component of tmat3x3's index should be less than 2!");
     }
 
     return rows_[index.first][index.second];
@@ -246,23 +237,18 @@ struct tmat3x3 {
 
   constexpr row_t& operator[](row_index_t index) noexcept { return rows_[index]; }
 
-  constexpr const row_t& operator[](row_index_t index) const noexcept {
-    return rows_[index];
-  }
+  constexpr const row_t& operator[](row_index_t index) const noexcept { return rows_[index]; }
 
   constexpr bool operator==(const tmat3x3& other) const noexcept {
-    return (rows_[0] == other.rows_[0]) && (rows_[1] == other.rows_[1]) &&
-           (rows_[2] == other.rows_[2]);
+    return (rows_[0] == other.rows_[0]) && (rows_[1] == other.rows_[1]) && (rows_[2] == other.rows_[2]);
   }
 
   constexpr tmat3x3 operator+(const tmat3x3& other) const noexcept {
-    return tmat3x3(rows_[0] + other.rows_[0], rows_[1] + other.rows_[1],
-                   rows_[2] + other.rows_[2]);
+    return tmat3x3(rows_[0] + other.rows_[0], rows_[1] + other.rows_[1], rows_[2] + other.rows_[2]);
   }
 
   constexpr tmat3x3 operator-(const tmat3x3& other) const noexcept {
-    return tmat3x3(rows_[0] - other.rows_[0], rows_[1] - other.rows_[1],
-                   rows_[2] - other.rows_[2]);
+    return tmat3x3(rows_[0] - other.rows_[0], rows_[1] - other.rows_[1], rows_[2] - other.rows_[2]);
   }
 
   constexpr tmat3x3& operator+=(const tmat3x3& other) noexcept {
@@ -336,12 +322,11 @@ struct tmat4x4 {
 
   constexpr tmat4x4(const row_t& diagonal) noexcept
       : rows_({row_t(diagonal[0], zero, zero, zero), row_t(zero, diagonal[1], zero, zero),
-               row_t(zero, zero, diagonal[2], zero),
-               row_t(zero, zero, zero, diagonal[3])}) {}
+               row_t(zero, zero, diagonal[2], zero), row_t(zero, zero, zero, diagonal[3])}) {}
 
   constexpr tmat4x4(value_t d1, value_t d2, value_t d3, value_t d4) noexcept
-      : rows_({row_t(d1, zero, zero, zero), row_t(zero, d2, zero, zero),
-               row_t(zero, zero, d3, zero), row_t(zero, zero, zero, d4)}) {}
+      : rows_({row_t(d1, zero, zero, zero), row_t(zero, d2, zero, zero), row_t(zero, zero, d3, zero),
+               row_t(zero, zero, zero, d4)}) {}
 
   static tmat4x4 get_identity() noexcept { return tmat4x4(static_cast<value_t>(1)); }
 
@@ -373,8 +358,7 @@ struct tmat4x4 {
 
   tmat4x4& assign(index_t index, value_t value) {
     if (index.first >= 4 || index.second >= 4) {
-      throw std::out_of_range(
-          "Each component of tmat4x4's index should be less than 2!");
+      throw std::out_of_range("Each component of tmat4x4's index should be less than 2!");
     }
 
     rows_[index.first][index.second] = value;
@@ -384,8 +368,7 @@ struct tmat4x4 {
 
   value_t& at(index_t index) {
     if (index.first >= 4 || index.second >= 4) {
-      throw std::out_of_range(
-          "Each component of tmat4x4's index should be less than 2!");
+      throw std::out_of_range("Each component of tmat4x4's index should be less than 2!");
     }
 
     return rows_[index.first][index.second];
@@ -393,8 +376,7 @@ struct tmat4x4 {
 
   const value_t& at(index_t index) const {
     if (index.first >= 4 || index.second >= 4) {
-      throw std::out_of_range(
-          "Each component of tmat4x4's index should be less than 2!");
+      throw std::out_of_range("Each component of tmat4x4's index should be less than 2!");
     }
 
     return rows_[index.first][index.second];
@@ -402,23 +384,21 @@ struct tmat4x4 {
 
   constexpr row_t& operator[](row_index_t index) noexcept { return rows_[index]; }
 
-  constexpr const row_t& operator[](row_index_t index) const noexcept {
-    return rows_[index];
-  }
+  constexpr const row_t& operator[](row_index_t index) const noexcept { return rows_[index]; }
 
   constexpr bool operator==(const tmat4x4& other) const noexcept {
-    return (rows_[0] == other.rows_[0]) && (rows_[1] == other.rows_[1]) &&
-           (rows_[2] == other.rows_[2]) && (rows_[3] == other.rows_[3]);
+    return (rows_[0] == other.rows_[0]) && (rows_[1] == other.rows_[1]) && (rows_[2] == other.rows_[2]) &&
+           (rows_[3] == other.rows_[3]);
   }
 
   constexpr tmat4x4 operator+(const tmat4x4& other) const noexcept {
-    return tmat4x4(rows_[0] + other.rows_[0], rows_[1] + other.rows_[1],
-                   rows_[2] + other.rows_[2], rows_[3] + other.rows_[3]);
+    return tmat4x4(rows_[0] + other.rows_[0], rows_[1] + other.rows_[1], rows_[2] + other.rows_[2],
+                   rows_[3] + other.rows_[3]);
   }
 
   constexpr tmat4x4 operator-(const tmat4x4& other) const noexcept {
-    return tmat4x4(rows_[0] - other.rows_[0], rows_[1] - other.rows_[1],
-                   rows_[2] - other.rows_[2], rows_[3] - other.rows_[3]);
+    return tmat4x4(rows_[0] - other.rows_[0], rows_[1] - other.rows_[1], rows_[2] - other.rows_[2],
+                   rows_[3] - other.rows_[3]);
   }
 
   constexpr tmat4x4& operator+=(const tmat4x4& other) noexcept {
@@ -440,15 +420,13 @@ struct tmat4x4 {
   }
 
   constexpr tmat4x4 operator*(value_t scale) const noexcept {
-    return tmat4x4(rows_[0] * scale, rows_[1] * scale, rows_[2] * scale,
-                   rows_[3] * scale);
+    return tmat4x4(rows_[0] * scale, rows_[1] * scale, rows_[2] * scale, rows_[3] * scale);
   }
 
   constexpr tmat4x4 operator/(value_t scale) const noexcept
     requires(types::is_float_v<value_t>)
   {
-    return tmat4x4(rows_[0] / scale, rows_[1] / scale, rows_[2] / scale,
-                   rows_[3] / scale);
+    return tmat4x4(rows_[0] / scale, rows_[1] / scale, rows_[2] / scale, rows_[3] / scale);
   }
 
   constexpr tmat4x4& operator*=(value_t scale) noexcept {
@@ -472,8 +450,7 @@ struct tmat4x4 {
   }
 
   constexpr friend tmat4x4 operator*(value_t scale, const tmat4x4& mat) noexcept {
-    return tmat4x4(mat.rows_[0] * scale, mat.rows_[1] * scale, mat.rows_[2] * scale,
-                   mat.rows_[3] * scale);
+    return tmat4x4(mat.rows_[0] * scale, mat.rows_[1] * scale, mat.rows_[2] * scale, mat.rows_[3] * scale);
   }
 
   private:

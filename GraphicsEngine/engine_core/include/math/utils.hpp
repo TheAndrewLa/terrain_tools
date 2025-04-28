@@ -1,7 +1,7 @@
 #ifndef ENGINE_CORE_MATH_UTILS_H
 #define ENGINE_CORE_MATH_UTILS_H
 
-#include "../types.hpp"
+#include <types.hpp>
 
 #include <cmath>
 

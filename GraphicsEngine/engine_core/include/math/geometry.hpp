@@ -1,9 +1,13 @@
 #ifndef ENGINE_CORE_MATH_GEOMETRY_H
 #define ENGINE_CORE_MATH_GEOMETRY_H
 
-#include "../types.hpp"
-#include "matrix.hpp"
-#include "vector.hpp"
+#include <math/matrix.hpp>
+#include <math/utils.hpp>
+#include <math/vector.hpp>
+
+#include <types.hpp>
+
+#include <stdexcept>
 
 /*
 ========================
@@ -13,32 +17,19 @@
 
 namespace ala::geometry {
 
-template <typename T>
+template <typename T, typename PowerFn, typename TrigFn>
   requires(std::is_floating_point_v<T>)
 struct cartesian_coords_2D;
 
-template <typename T>
+template <typename T, typename PowerFn, typename TrigFn>
   requires(std::is_floating_point_v<T>)
 struct polar_coords;
 
-template <typename T>
+template <typename T, typename PowerFn, typename TrigFn>
   requires(std::is_floating_point_v<T>)
 struct cartesian_coords_3D;
 
-// IDEA: plan for geometry framework
-
-// TODO: coordinate systems in 2D
-// TODO: coordinate systems in 3D
-
-// TODO: point2D
-// TODO: point3D
-
-// TODO: line2D
-// TODO: line3D
-
-// TODO: plane
-
-template <typename T>
+template <typename T, typename PowerFn = math::libc_powers<T>, typename TrigFn = math::libc_trigonometry<T>>
   requires(std::is_floating_point_v<T>)
 struct cartesian_coords_2D {
   using value_t = T;
@@ -60,7 +51,7 @@ struct cartesian_coords_2D {
   vec_t global_offset_;
 };
 
-template <typename T>
+template <typename T, typename PowerFn = math::libc_powers<T>, typename TrigFn = math::libc_trigonometry<T>>
   requires(std::is_floating_point_v<T>)
 struct polar_coords {
   using value_t = T;
@@ -85,7 +76,7 @@ struct polar_coords {
 // 3-dimensional coordinate systems
 // TODO: spherical & cylindrical coordinates
 
-template <typename T>
+template <typename T, typename PowerFn = math::libc_powers<T>, typename TrigFn = math::libc_trigonometry<T>>
   requires(std::is_floating_point_v<T>)
 struct cartesian_coords_3D {
   using value_t = T;

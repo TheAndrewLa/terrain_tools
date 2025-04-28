@@ -1,8 +1,9 @@
 #ifndef ENGINE_CORE_MATH_VECTOR_H
 #define ENGINE_CORE_MATH_VECTOR_H
 
-#include "../types.hpp"
-#include "utils.hpp"
+#include <math/utils.hpp>
+
+#include <types.hpp>
 
 #include <cassert>
 #include <cmath>
@@ -187,8 +188,7 @@ struct tvec3 {
 
   constexpr tvec3(value_t x, value_t y) noexcept : vals_({x, y, zero}) {}
 
-  constexpr tvec3(const tvec2<value_t>& vec, value_t value) noexcept
-      : tvec3(vec.x(), vec.y(), value) {}
+  constexpr tvec3(const tvec2<value_t>& vec, value_t value) noexcept : tvec3(vec.x(), vec.y(), value) {}
 
   explicit constexpr tvec3(const tvec2<value_t>& vec) noexcept : tvec3(vec, zero) {}
 
@@ -258,22 +258,18 @@ struct tvec3 {
 
   constexpr value_t& operator[](index_t index) noexcept { return vals_[index]; }
 
-  constexpr const value_t& operator[](index_t index) const noexcept {
-    return vals_[index];
-  }
+  constexpr const value_t& operator[](index_t index) const noexcept { return vals_[index]; }
 
   constexpr bool operator==(const tvec3& other) const noexcept {
     return (vals_[0] == other[0]) && (vals_[1] == other[1]) && (vals_[2] == other[2]);
   }
 
   constexpr tvec3 operator+(const tvec3& other) const noexcept {
-    return tvec3(vals_[0] + other.vals_[0], vals_[1] + other.vals_[1],
-                 vals_[2] + other.vals_[2]);
+    return tvec3(vals_[0] + other.vals_[0], vals_[1] + other.vals_[1], vals_[2] + other.vals_[2]);
   }
 
   constexpr tvec3 operator-(const tvec3& other) const noexcept {
-    return tvec3(vals_[0] - other.vals_[0], vals_[1] - other.vals_[1],
-                 vals_[2] - other.vals_[2]);
+    return tvec3(vals_[0] - other.vals_[0], vals_[1] - other.vals_[1], vals_[2] - other.vals_[2]);
   }
 
   constexpr tvec3& operator+=(const tvec3& other) noexcept {
@@ -338,8 +334,7 @@ struct tvec4 {
 
   tvec4() = delete;
 
-  constexpr tvec4(value_t x, value_t y, value_t z, value_t w) noexcept
-      : vals_({x, y, z, w}) {}
+  constexpr tvec4(value_t x, value_t y, value_t z, value_t w) noexcept : vals_({x, y, z, w}) {}
 
   constexpr tvec4(value_t x, value_t y, value_t z) noexcept : tvec4(x, y, z, zero) {}
 
@@ -350,8 +345,7 @@ struct tvec4 {
 
   explicit tvec4(const tvec3<value_t>& vec) noexcept : tvec4(vec, zero) {}
 
-  explicit constexpr tvec4(value_t scalar) noexcept
-      : tvec4(scalar, scalar, scalar, scalar) {}
+  explicit constexpr tvec4(value_t scalar) noexcept : tvec4(scalar, scalar, scalar, scalar) {}
 
   constexpr tvec4() noexcept : tvec4(zero) {}
 
@@ -420,23 +414,21 @@ struct tvec4 {
 
   constexpr value_t& operator[](index_t index) noexcept { return vals_[index]; }
 
-  constexpr const value_t& operator[](index_t index) const noexcept {
-    return vals_[index];
-  }
+  constexpr const value_t& operator[](index_t index) const noexcept { return vals_[index]; }
 
   constexpr bool operator==(const tvec4& other) const noexcept {
-    return (vals_[0] == other.vals_[0]) && (vals_[1] == other.vals_[1]) &&
-           (vals_[2] == other.vals_[2]) && (vals_[3] == other.vals_[3]);
+    return (vals_[0] == other.vals_[0]) && (vals_[1] == other.vals_[1]) && (vals_[2] == other.vals_[2]) &&
+           (vals_[3] == other.vals_[3]);
   }
 
   constexpr tvec4 operator+(const tvec4& other) const noexcept {
-    return tvec4(vals_[0] + other.vals_[0], vals_[1] + other.vals_[1],
-                 vals_[2] + other.vals_[2], vals_[3] + other.vals_[3]);
+    return tvec4(vals_[0] + other.vals_[0], vals_[1] + other.vals_[1], vals_[2] + other.vals_[2],
+                 vals_[3] + other.vals_[3]);
   }
 
   constexpr tvec4 operator-(const tvec4& other) const noexcept {
-    return tvec4(vals_[0] - other.vals_[0], vals_[1] - other.vals_[1],
-                 vals_[2] - other.vals_[2], vals_[3] - other.vals_[3]);
+    return tvec4(vals_[0] - other.vals_[0], vals_[1] - other.vals_[1], vals_[2] - other.vals_[2],
+                 vals_[3] - other.vals_[3]);
   }
 
   constexpr tvec4& operator+=(const tvec4& other) noexcept {
@@ -488,8 +480,7 @@ struct tvec4 {
   }
 
   constexpr friend tvec4 operator*(value_t scale, const tvec4& vec) noexcept {
-    return tvec4(vec.vals_[0] * scale, vec.vals_[1] * scale, vec.vals_[2] * scale,
-                 vec.vals_[3] * scale);
+    return tvec4(vec.vals_[0] * scale, vec.vals_[1] * scale, vec.vals_[2] * scale, vec.vals_[3] * scale);
   }
 
   private:
