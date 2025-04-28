@@ -24,6 +24,7 @@ class polymorphic_allocator {
 };
 
 class libc_allocator : public polymorphic_allocator {
+  public:
   void* allocate(types::usize size) final;
   void* allocate_aligned(types::usize size, types::usize alignment) final;
 
