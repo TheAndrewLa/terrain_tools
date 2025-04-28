@@ -1,0 +1,18 @@
+CompileFlags:
+  Compiler: g++
+  Add: 
+    - -std=c++20
+    - -Wall
+    - -Wextra
+  Remove: []
+Diagnostics:
+  ClangTidy:
+    Add: 
+      - modernize-*
+      - performance-*
+      - readability-*
+    Remove:
+      - modernize-use-nodiscard
+      - modernize-use-trailing-return-type
+Index:
+  Background: Build

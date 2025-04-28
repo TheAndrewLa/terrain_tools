@@ -1,6 +1,9 @@
 # VSCode folders & files
 .vscode
 
+# CMake folder
+*build
+
 # Prerequisites
 *.d
 
