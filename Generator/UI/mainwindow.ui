@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1039</width>
-    <height>788</height>
+    <height>834</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -82,8 +82,8 @@
    <widget class="QPushButton" name="generatePB">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>660</y>
+      <x>10</x>
+      <y>710</y>
       <width>111</width>
       <height>41</height>
      </rect>
@@ -234,19 +234,6 @@
      <number>5</number>
     </property>
    </widget>
-   <widget class="QPushButton" name="editOtavesPB">
-    <property name="geometry">
-     <rect>
-      <x>100</x>
-      <y>710</y>
-      <width>93</width>
-      <height>29</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Edit</string>
-    </property>
-   </widget>
    <widget class="QSpinBox" name="centerXSB">
     <property name="geometry">
      <rect>
@@ -298,8 +285,8 @@
    <widget class="QPushButton" name="imagePB">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>660</y>
+      <x>150</x>
+      <y>710</y>
       <width>111</width>
       <height>41</height>
      </rect>
@@ -511,6 +498,32 @@
     </property>
     <property name="scaledContents">
      <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="erosionL">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>660</y>
+      <width>141</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Hydravlic erosion:</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="erosionCB">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>660</y>
+      <width>41</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
     </property>
    </widget>
   </widget>

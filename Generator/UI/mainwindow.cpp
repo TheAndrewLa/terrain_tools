@@ -2,7 +2,7 @@
 #include "./ui_mainwindow.h"
 #include <thread>
 #include "../FileConverter/fileconverter.h"
-
+#include <iostream>
 #include "../Types.h"
 using namespace types;
 
@@ -15,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
     scene_ = new QGraphicsScene();
     ui->graphicsView->setScene(scene_);
     get_current_map();
+    ui->curveOutputL->setText(QString::fromStdString(static_cast<std::string>(curve_)));
 }
 
 MainWindow::~MainWindow()
@@ -92,6 +93,7 @@ void MainWindow::on_imagePB_clicked()
     FileConverter::to_file(terrain_, "out");
     terrain_ = FileConverter::from_file("out");
     export_png(terrain_, file_image_);
+
     ui->outputL->setText("image");
 
     QPixmap p(file_image_);
@@ -122,5 +124,10 @@ void MainWindow::on_addPointPB_clicked()
 void MainWindow::on_clearCurvePB_clicked()
 {
     curve_.clear();
+}
+
+void MainWindow::on_erosionCB_stateChanged(int arg1)
+{
+    tg_.appled_erosion = static_cast<bool>(arg1);
 }
 

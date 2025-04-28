@@ -38,6 +38,7 @@ namespace terraingenerator {
         Terrain(Terrain&& other);
         uint32 width() const;
         uint32 height() const;
+        uchar* heightmap() const;
         Terrain& operator=(Terrain&& other);
         operator std::string();
         Array operator[](usize x) const;

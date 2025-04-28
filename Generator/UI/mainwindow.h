@@ -53,6 +53,8 @@ private slots:
 
     void on_clearCurvePB_clicked();
 
+    void on_erosionCB_stateChanged(int arg1);
+
 private:
     Ui::MainWindow *ui;
 };

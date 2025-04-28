@@ -38,6 +38,11 @@ uint32 Terrain::height() const {
     return height_;
 }
 
+uchar *Terrain::heightmap() const
+{
+    return heightmap_;
+}
+
 Terrain::operator std::string()
 {
     std::string map_str = "";

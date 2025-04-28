@@ -28,10 +28,12 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         Generator/heightmap.h
         Generator/terrain.h Generator/terrain.cpp
         Types.h
+        ImageGenerator/lodepng.h ImageGenerator/lodepng.cpp
         ImageGenerator/imagegenerator.h ImageGenerator/imagegenerator.cpp
         FileConverter/fileconverter.h FileConverter/fileconverter.cpp
-        FileConverter/huffmancompressor.h FileConverter/huffmancompressor.cpp
+        FileConverter/huffmancompressor.h
         Generator/Curve.h
+
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET Generator APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

@@ -47,7 +47,11 @@ namespace terraingenerator {
         }
 
         void add_point(T x, T y) {
-            points_.insert({x, y});
+            if (points_.contains(x)) {
+                points_[x] = y;
+            } else {
+                points_.insert({x, y});
+            }
             seted_coefficients_ = false;
         }
 
