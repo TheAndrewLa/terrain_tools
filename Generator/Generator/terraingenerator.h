@@ -19,13 +19,10 @@ namespace terraingenerator {
 
         struct ErosionParams {
             size_t iterations = 100;
-            double inertia = 0.05f;
             double capacity = 4.0f;
-            double minSlope = 0.01f;
             double deposition = 0.1f;
             double erosion = 0.3f;
             double evaporation = 0.01f;
-            double gravity = 9.81f;
         };
 
         void apply_erosion(Terrain& terrain, const ErosionParams& params);

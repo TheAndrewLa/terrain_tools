@@ -63,19 +63,19 @@ void TerrainGenerator::apply_erosion(Terrain& terrain, const ErosionParams& para
     std::vector<double> heightmap(height * width);
     std::vector<double> water(height * width, 0);
     std::vector<double> sediment(height * width, 0);
-    std::vector<double> velocity(height * width, 0);
 
-    for (size_t x = 0; x < height; ++x) {
-        for (size_t y = 0; y < width; ++y) {
-        heightmap[x * height + y] = terrain[x][y] / 255.0;
-        }
-    }
 
     auto index = [&](size_t x, size_t y) { return x * height + y; };
 
+    for (size_t x = 0; x < height; ++x) {
+        for (size_t y = 0; y < width; ++y) {
+            heightmap[index(x, y)] = terrain[x][y] / 255.0;
+        }
+    }
+
     const double rain_amount = 0.01;
 
-    for (size_t iter = 0; iter < params.iterations; ++iter) {
+    for (size_t iteretion = 0; iteretion < params.iterations; ++iteretion) {
         for (size_t i = 0; i < width * height; ++i) {
             water[i] += rain_amount;
         }
