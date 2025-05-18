@@ -29,6 +29,10 @@ namespace terraingenerator {
             U evaporation = 0.01f;
         };
 
+        static U linear_interpolate(U a, U b, U x) {
+            return a + x * (b - a);
+        }
+
         void apply_erosion(Terrain<T>& terrain, const ErosionParams& params)
         {
             const size_t width = terrain.width();
@@ -162,6 +166,7 @@ namespace terraingenerator {
             }
         }
 
+
     public:
         bool appled_erosion = false;
 
@@ -192,8 +197,9 @@ namespace terraingenerator {
 
                     nx = nx / map.scale;
                     ny = ny / map.scale;
-
+                    U d = std::min(1.0, (nx * nx + ny * ny) / sqrt(2));
                     U e = PerlinNoise<U>::noise2D(nx, ny, map.octaves, map.amplitude);
+                    e = linear_interpolate(e, 1 - d, 0.6);
                     e = curve.calculate(e);
                     terrain[x][y] = static_cast<T>(e * max_T);
 

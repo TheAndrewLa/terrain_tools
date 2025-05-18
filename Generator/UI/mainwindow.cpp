@@ -40,6 +40,10 @@ void MainWindow::get_current_map() {
         height, width, x_center, y_center,
         scale, angle, amplitude, octaves
     };
+    moisture_map_ = HeightMap {
+        height, width, x_center, y_center,
+        scale, angle, amplitude * 2, octaves * 2
+    };
 }
 
 void MainWindow::on_generatePB_clicked()
@@ -55,6 +59,7 @@ void MainWindow::on_generatePB_clicked()
 
     std::thread th([this]{
         terrain_ = tg_.generate(map_, curve_);
+        moisture_ = tg_.generate(moisture_map_, curve_);
         ui->outputL->setText("generated");
 
         ui->generatePB->setEnabled(true);
@@ -82,7 +87,6 @@ void MainWindow::on_randomPB_clicked()
     ui->outputL->setText("start");
     generate_random();
     ui->seedLE->setText(QString::fromStdString(std::to_string(map_.seed)));
-
 }
 
 void MainWindow::on_imagePB_clicked()
@@ -93,10 +97,11 @@ void MainWindow::on_imagePB_clicked()
     }
     ui->imagePB->setEnabled(false);
     ui->generatePB->setEnabled(false);
-    FileConverter<uchar>::to_file<double>(terrain_, "out");
-    terrain_ = FileConverter<uchar>::from_file<double>("out");
-
-    ImageGenerator::export_png<uchar>(terrain_, file_image_);
+    FileConverter<uchar>::to_file<double>(terrain_, "out_terrain");
+    terrain_ = FileConverter<uchar>::from_file<double>("out_terrain");
+    FileConverter<uchar>::to_file<double>(moisture_, "out_moisture");
+    moisture_ = FileConverter<uchar>::from_file<double>("out_moisture");
+    ImageGenerator<uchar, double>::export_png(terrain_, moisture_, file_image_);
 
     ui->outputL->setText("image");
 

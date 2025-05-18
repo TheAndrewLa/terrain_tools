@@ -5,7 +5,6 @@
 #include <string>
 #include "../Types.h"
 
-
 using namespace types;
 
 namespace terraingenerator {
@@ -27,14 +26,14 @@ namespace terraingenerator {
             }
         };
 
-    private:
+    protected:
         uint32 width_;
         uint32 height_;
-        T* heightmap_ = nullptr;
+        T* map_ = nullptr;
 
-        void deleteHeightMap() {
-            if (heightmap_ != nullptr) {
-                delete[] heightmap_;
+        void deleteMap() {
+            if (map_ != nullptr) {
+                delete[] map_;
             }
         }
 
@@ -44,7 +43,7 @@ namespace terraingenerator {
         Terrain(uint32 width, uint32 height) : Terrain(width, height, new uchar[height * width]) {
         }
 
-        Terrain(uint32 width, uint32 height, uchar* map) : width_(width), height_(height), heightmap_(map) {
+        Terrain(uint32 width, uint32 height, uchar* map) : width_(width), height_(height), map_(map) {
         }
 
         Terrain(const Terrain& other) = delete;
@@ -52,8 +51,8 @@ namespace terraingenerator {
         Terrain& operator=(const Terrain& other) = delete;
 
         Terrain(Terrain&& other) :
-            width_(other.width_), height_(other.height_), heightmap_(other.heightmap_) {
-            other.heightmap_ = nullptr;
+            width_(other.width_), height_(other.height_), map_(other.map_) {
+            other.map_ = nullptr;
         }
 
         uint32 width() const {
@@ -64,8 +63,8 @@ namespace terraingenerator {
             return height_;
         }
 
-        T* heightmap() const {
-            return heightmap_;
+        T* map() const {
+            return map_;
         }
 
         Terrain& operator=(Terrain&& other) {
@@ -73,13 +72,13 @@ namespace terraingenerator {
                 return *this;
             }
 
-            deleteHeightMap();
+            deleteMap();
 
             width_ = other.width_;
             height_ = other.height_;
-            heightmap_ = other.heightmap_;
+            map_ = other.map_;
 
-            other.heightmap_ = nullptr;
+            other.map_ = nullptr;
 
             return *this;
         }
@@ -89,7 +88,7 @@ namespace terraingenerator {
             std::string map_str = "";
             for (usize x = 0; x < height_; ++x) {
                 for (usize y = 0; y < width_; ++y) {
-                    map_str += std::to_string(heightmap_[height_ * x + y]) + "\t";
+                    map_str += std::to_string(map_[height_ * x + y]) + "\t";
                 }
                 map_str += "\n";
             }
@@ -98,12 +97,12 @@ namespace terraingenerator {
 
         Array operator[](usize x) const
         {
-            Array array{heightmap_, height_ * x};
+            Array array{map_, height_ * x};
             return array;
         }
 
         ~Terrain() {
-            deleteHeightMap();
+            deleteMap();
         }
 
         friend class FileConverter<T>;

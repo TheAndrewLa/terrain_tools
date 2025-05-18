@@ -24,7 +24,9 @@ class MainWindow : public QMainWindow
 private:
     TerrainGenerator<uchar, double> tg_{};
     Terrain<uchar> terrain_;
+    Terrain<uchar> moisture_;
     HeightMap<double> map_{};
+    HeightMap<double> moisture_map_{};
     Curve<double> curve_{};
 
     std::mutex mtx_image_;

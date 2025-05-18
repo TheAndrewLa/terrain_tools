@@ -46,9 +46,9 @@ namespace terraingenerator {
             size_t size = terrain.height_ * terrain.width_;
             std::unique_ptr<T[]> delta(new T[size]);
 
-            delta[0] = terrain.heightmap_[0];
+            delta[0] = terrain.map_[0];
             for (size_t i = 1; i < size; ++i) {
-                delta[i] = terrain.heightmap_[i] - terrain.heightmap_[i - 1];
+                delta[i] = terrain.map_[i] - terrain.map_[i - 1];
             }
 
             uint32 freq[count_U] = {0};
