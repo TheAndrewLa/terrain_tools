@@ -2,8 +2,9 @@
 #include "./ui_mainwindow.h"
 #include <thread>
 #include "../FileConverter/fileconverter.h"
-#include <iostream>
+#include "../ImageGenerator/imagegenerator.h"
 #include "../Types.h"
+
 using namespace types;
 
 MainWindow::MainWindow(QWidget *parent)
@@ -78,6 +79,7 @@ void MainWindow::generate_random() {
 
 void MainWindow::on_randomPB_clicked()
 {
+    ui->outputL->setText("start");
     generate_random();
     ui->seedLE->setText(QString::fromStdString(std::to_string(map_.seed)));
 
@@ -85,14 +87,16 @@ void MainWindow::on_randomPB_clicked()
 
 void MainWindow::on_imagePB_clicked()
 {
+    ui->outputL->setText("start");
     if (terrain_.width() == 0 || terrain_.height() == 0) {
         return;
     }
     ui->imagePB->setEnabled(false);
     ui->generatePB->setEnabled(false);
-    FileConverter::to_file(terrain_, "out");
-    terrain_ = FileConverter::from_file("out");
-    export_png(terrain_, file_image_);
+    FileConverter<uchar>::to_file<double>(terrain_, "out");
+    terrain_ = FileConverter<uchar>::from_file<double>("out");
+
+    ImageGenerator::export_png<uchar>(terrain_, file_image_);
 
     ui->outputL->setText("image");
 
@@ -130,4 +134,3 @@ void MainWindow::on_erosionCB_stateChanged(int arg1)
 {
     tg_.appled_erosion = static_cast<bool>(arg1);
 }
-

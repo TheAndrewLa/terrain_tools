@@ -2,14 +2,16 @@
 #define IMAGEGENERATOR_H
 
 #pragma once
-#include "../Types.h"
 #include "../Generator/terrain.h"
 
 using namespace types;
 
 namespace terraingenerator {
-
-    void export_png(const Terrain& terrain, const char *file_name);
+    class ImageGenerator {
+    public:
+        template <std::unsigned_integral T>
+        static void export_png(const Terrain<T>& terrain, const char *file_name);
     //void saveTerrainAsPng(const Terrain& terrain, const char * filename);
+    };
 }
 #endif // IMAGEGENERATOR_H

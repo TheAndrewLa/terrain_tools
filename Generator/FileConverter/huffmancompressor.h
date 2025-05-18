@@ -2,17 +2,17 @@
 #define HUFFMANCOMPRESSOR_H
 #include "../Types.h"
 #include <cstring>
-
+#include <cmath>
 using namespace types;
 
 namespace terraingenerator {
-template <typename T>
+template <std::unsigned_integral T, std::floating_point U>
 class HuffmanCommpressor
 {
 public:
     struct Node {
-        uchar symbol;
-        T freq;
+        T symbol;
+        U freq;
         Node* left = nullptr;
         Node* right = nullptr;
 
@@ -26,13 +26,16 @@ public:
         }
     };
 private:
+    static constexpr uint32 count_T = std::numeric_limits<T>::max() + 1;
+
     Node* root = nullptr;
-    uint32 codes[256];
-    uchar codeLengths[256];
+
+    uint32 codes[count_T];
+    T codeLengths[count_T];
 
     void insert(Node** heap, uint32& size, Node* node) {
         heap[size++] = node;
-        int i = size - 1;
+        long long i = size - 1;
         while (i > 0) {
             int parent = (i - 1) / 2;
             if (heap[parent]->freq <= heap[i]->freq) {
@@ -70,7 +73,7 @@ private:
         return minNode;
     }
 
-    void buildCodeTable(Node* node, uint32 code, uchar length) {
+    void buildCodeTable(Node* node, uint32 code, T length) {
         if (!node->left && !node->right) {
             codes[node->symbol] = code;
             codeLengths[node->symbol] = length;
@@ -85,17 +88,14 @@ private:
     }
 
 public:
-    HuffmanCommpressor(T freq[256]) {
+    HuffmanCommpressor(uint32 freq[count_T]) {
         memset(codes, 0, sizeof(codes));
         memset(codeLengths, 0, sizeof(codeLengths));
-        Node* heap[256];
+        Node* heap[count_T];
         uint32 heapSize = 0;
-        for (uchar i = 0; i <= 255; ++i) {
+        for (uint32 i = 0; i < count_T; ++i) {
             if (freq[i] > 0) {
                 insert(heap, heapSize, new Node(i, freq[i]));
-            }
-            if (i == 255) {
-                break;
             }
         }
         while (heapSize > 1) {
@@ -107,11 +107,11 @@ public:
         buildCodeTable(root, 0, 0);
     }
 
-    uchar* compress(const uchar* data, uint32 dataSize, uint32& outSize, uchar firstValue) {
-        uchar* out = new uchar[dataSize];
-        int bitPos = 0, bytePos = 0;
+    T* compress(const T* data, uint32 dataSize, uint32& outSize, T firstValue) {
+        T* out = new T[dataSize];
+        uint32 bitPos = 0, bytePos = 0;
         out[0] = 0;
-        for (int i = 1; i < dataSize; ++i) {
+        for (uint32 i = 1; i < dataSize; ++i) {
             uint32 code = codes[data[i]];
             int len = codeLengths[data[i]];
             for (int b = len - 1; b >= 0; --b) {
@@ -129,12 +129,12 @@ public:
         return out;
     }
 
-    uchar* decompress(const uchar* data, uint32 dataSize, uint32 expectedSize, uchar firstValue) {
-        uchar* out = new uchar[expectedSize];
+    T* decompress(const T* data, uint32 dataSize, uint32 expectedSize, T firstValue) {
+        T* out = new T[expectedSize];
         uint32 outIndex = 0;
         uint32 bytePos = 0, bitPos = 0;
         Node* node = root;
-        uchar current = firstValue;
+        T current = firstValue;
         out[outIndex++] = current;
         while (bytePos < dataSize && outIndex < expectedSize) {
             int bit = (data[bytePos] >> (7 - bitPos)) & 1;

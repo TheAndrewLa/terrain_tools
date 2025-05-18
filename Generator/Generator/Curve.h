@@ -7,7 +7,7 @@
 #include <string>
 
 namespace terraingenerator {
-    template<typename T>
+    template< std::floating_point T>
     class Curve {
     private:
         std::vector<T> coefficients_{};
