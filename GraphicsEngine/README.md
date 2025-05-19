@@ -14,6 +14,6 @@
 >    See the License for the specific language governing permissions and
 >    limitations under the License.
 
-![Funny picture about OpenGL](./Assets/funny_pic.jpg)
+![Funny picture about OpenGL](./assets/funny_pic.jpg)
 > Source: t.me/slavic_memes
 
