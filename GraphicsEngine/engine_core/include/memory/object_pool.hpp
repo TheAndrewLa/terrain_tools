@@ -2,45 +2,44 @@
 #define ENGINE_CORE_MEMORY_OBJECT_POOL_H
 
 #include <memory/memory.hpp>
+#include <types.hpp>
+
+#include <memory>
 
 namespace ala::memory {
 
-// Default object pool is not thread safe, there's specialized version of thread safe object pool
-// TODO: think about polymorphic pool
-
-class object_pool {
-  protected:
-  using byte = types::uint8;
-
+class pool {
   public:
-  object_pool(polymorphic_allocator& allocator, types::usize object_size, types::usize max_count);
-  object_pool(const object_pool&) = delete;
-  object_pool(object_pool&& pool);
+  virtual void* get() = 0;
+  virtual void release(void* ptr) noexcept = 0;
 
-  ~object_pool();
+  virtual void clear() noexcept = 0;
 
-  object_pool& operator=(const object_pool&) = delete;
-  object_pool& operator=(object_pool&& pool);
-
-  template <typename T>
-  T* allocate_object() {}
-
-  template <typename T, typename... Args>
-  T* construct_object(Args&&... arguments) {}
-
-  void free_object(void* ptr) noexcept;
+  inline types::usize object_size() const noexcept { return size_; }
 
   protected:
-  byte* pool_ptr_;
-  byte* free_ptr_;
+  pool(types::usize object_size, std::shared_ptr<allocator> allocator = libc_allocator::get());
 
-  types::usize object_size_;
-  types::usize pool_size_;
+  types::usize size_;
+  std::shared_ptr<allocator> allocator_;
 };
 
-class object_pool_thread_safe : object_pool {
-	// TODO: describe
-};
+template <typename T, typename PoolT = pool>
+T* get_from_pool(std::shared_ptr<PoolT> pool) {
+  if (pool->object_size() != sizeof(T)) {
+    throw std::invalid_argument{"This pool is incompatible with provided type!"};
+  }
+
+  return reinterpret_cast<T*>(pool->get());
+}
+
+class static_pool final : public pool {};
+
+class static_pool_thread_safe final : public pool {};
+
+class dynamic_pool final : public pool {};
+
+class dynamic_pool_thread_safe final : public pool {};
 
 }  // namespace ala::memory
 

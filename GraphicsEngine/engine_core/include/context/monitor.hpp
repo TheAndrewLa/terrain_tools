@@ -5,28 +5,31 @@
 
 #include <types.hpp>
 
+#include <array>
 #include <memory>
 #include <string>
 
-using std::shared_ptr;
-
-namespace ala::wnd {
+namespace ala::ctx {
 
 class window;
 
 class monitor {
   public:
-  using gamma = types::float32;
+  struct gamma_ramp {
+    std::array<unsigned short, 256> red;
+    std::array<unsigned short, 256> green;
+    std::array<unsigned short, 256> blue;
+  };
 
   struct video_mode {
-    types::int32 width, height;
-    types::int32 red_bits, green_bits, blue_bits;
-    types::int32 refresh_rate;
+    int width, height;
+    int red_bits, green_bits, blue_bits;
+    int refresh_rate;
   };
 
   struct size_type {
-    types::int32 width;
-    types::int32 height;
+    int width;
+    int height;
   };
 
   monitor() = delete;
@@ -36,16 +39,14 @@ class monitor {
   monitor& operator=(const monitor& monitor) = delete;
   monitor& operator=(monitor&& monitor) = delete;
 
-  static shared_ptr<monitor> get_primary();
-
-  static types::usize get_count();
-  static shared_ptr<monitor> get_by_index(types::int32 index);
+  static std::shared_ptr<monitor> get_primary();
 
   std::string get_name() const;
   video_mode get_video_mode() const;
   size_type get_physical_size() const;
 
-  void set_gamma(gamma gamma);
+  void set_gamma(float gamma);
+  void set_gamma(const gamma_ramp& gamma);
 
   private:
   friend class window;

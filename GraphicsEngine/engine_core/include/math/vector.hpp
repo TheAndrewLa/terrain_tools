@@ -47,8 +47,10 @@ struct tvec2 {
   using index_t = usize;
   using value_t = T;
 
-  tvec2() = delete;
+  private:
+  static constexpr auto zero = static_cast<value_t>(0);
 
+  public:
   constexpr tvec2(value_t x, value_t y) noexcept : vals_({x, y}) {}
 
   explicit constexpr tvec2(value_t value) noexcept : tvec2(value, value) {}
@@ -171,8 +173,6 @@ struct tvec2 {
   }
 
   private:
-  static constexpr auto zero = static_cast<value_t>(0);
-
   value_t vals_[2];
 };
 
@@ -182,8 +182,10 @@ struct tvec3 {
   using index_t = usize;
   using value_t = T;
 
-  tvec3() = delete;
+  private:
+  static constexpr auto zero = static_cast<value_t>(0);
 
+  public:
   constexpr tvec3(value_t x, value_t y, value_t z) noexcept : vals_({x, y, z}) {}
 
   constexpr tvec3(value_t x, value_t y) noexcept : vals_({x, y, zero}) {}
@@ -321,8 +323,6 @@ struct tvec3 {
   }
 
   private:
-  static constexpr auto zero = static_cast<value_t>(0);
-
   value_t vals_[3];
 };
 
@@ -332,8 +332,10 @@ struct tvec4 {
   using index_t = usize;
   using value_t = T;
 
-  tvec4() = delete;
+  private:
+  static constexpr auto zero = static_cast<value_t>(0);
 
+  public:
   constexpr tvec4(value_t x, value_t y, value_t z, value_t w) noexcept : vals_({x, y, z, w}) {}
 
   constexpr tvec4(value_t x, value_t y, value_t z) noexcept : tvec4(x, y, z, zero) {}
@@ -484,8 +486,6 @@ struct tvec4 {
   }
 
   private:
-  static constexpr auto zero = static_cast<value_t>(0);
-
   value_t vals_[4];
 };
 

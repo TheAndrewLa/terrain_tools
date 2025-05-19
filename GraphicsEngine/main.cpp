@@ -1,6 +1,9 @@
 #include <iostream>
-#include "engine_core/include/platform.hpp"
+
+#include <platform.hpp>
+#include <types.hpp>
+
+using namespace ala;
 
 int main(int argc, char** argv) {
-    std::cout << "Hello from main.cpp!" << '\n';
 }

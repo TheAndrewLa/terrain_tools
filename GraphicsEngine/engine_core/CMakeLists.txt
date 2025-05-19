@@ -32,7 +32,10 @@ target_include_directories(core PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 target_link_libraries(core PUBLIC glfw boost_predef_interface)
 
-file(GLOB_RECURSE ENGINE_CORE_SOURCES src/*.cpp src/*.cc)
+file(GLOB_RECURSE ENGINE_CORE_SOURCES src/*.cpp)
 target_sources(core PRIVATE ${ENGINE_CORE_SOURCES})
+
+file(GLOB_RECURSE ENGINE_CORE_HDRS include/*.h include/*.hpp)
+target_precompile_headers(core PUBLIC ${ENGINE_CORE_HDRS})
 
 set_target_properties(core PROPERTIES PUBLIC_HEADER "${CMAKE_CURRENT_SOURCE_DIR}/include/*.h;${CMAKE_CURRENT_SOURCE_DIR}/include/*.hpp")

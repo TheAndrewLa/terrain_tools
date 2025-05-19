@@ -4,41 +4,33 @@
 
 #include <stdexcept>
 
-namespace ala::wnd {
+namespace ala::ctx {
 
-monitor::monitor(GLFWmonitor* monitor) : hmonitor_(monitor) {}
+monitor::monitor(GLFWmonitor* monitor) {
+  if (monitor == nullptr) {
+    throw std::invalid_argument{"Monitor handle is NULL!"};
+  }
 
-shared_ptr<monitor> monitor::get_primary() {
+  hmonitor_ = monitor;
+}
+
+std::shared_ptr<monitor> monitor::get_primary() {
   return std::shared_ptr<monitor>(new monitor(glfwGetPrimaryMonitor()));
 }
 
-shared_ptr<monitor> monitor::get_by_index(types::int32 index) {
-  types::int32 count;
-  auto* monitors = glfwGetMonitors(&count);
-
-  assert(monitors != nullptr);
-  assert(count > 0);
-
-  if (index >= count) {
-    throw std::invalid_argument("Invalid index for monitor!");
-  }
-
-  return shared_ptr<monitor>(new monitor(monitors[index]));
-}
-
-types::usize monitor::get_count() {
-  types::int32 count;
-  glfwGetMonitors(&count);
-
-  if (count <= 0) {
-    throw std::runtime_error("Invalid number of monitors!");
-  }
-
-  return static_cast<types::usize>(count);
-}
-
-void monitor::set_gamma(monitor::gamma gamma) {
+void monitor::set_gamma(float gamma) {
   glfwSetGamma(hmonitor_, gamma);
+}
+
+void monitor::set_gamma(const monitor::gamma_ramp& gamma) {
+  GLFWgammaramp ramp;
+
+  ramp.size = 256;
+  ramp.red = const_cast<unsigned short*>(std::addressof(gamma.red[0]));
+  ramp.green = const_cast<unsigned short*>(std::addressof(gamma.green[0]));
+  ramp.blue = const_cast<unsigned short*>(std::addressof(gamma.blue[0]));
+
+  glfwSetGammaRamp(hmonitor_, &ramp);
 }
 
 std::string monitor::get_name() const {
