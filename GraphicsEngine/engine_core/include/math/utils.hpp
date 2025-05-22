@@ -5,6 +5,16 @@
 
 #include <cmath>
 
+/*
+=====================
+    MATH LIBRARY
+    UTILS
+=====================
+
+TODO: Write tests for all math/geometry library
+TODO: Check compiler's output (to see optimizations)
+*/
+
 namespace ala::math {
 
 // Struct with a set of trigonometric functions and power functions

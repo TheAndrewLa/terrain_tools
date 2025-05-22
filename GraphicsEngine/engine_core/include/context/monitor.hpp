@@ -53,7 +53,7 @@ class monitor {
 
   monitor(GLFWmonitor* monitor_handle);
 
-  GLFWmonitor* get_handle();
+  GLFWmonitor* get_handle() const;
 
   mutable GLFWmonitor* hmonitor_;
 };

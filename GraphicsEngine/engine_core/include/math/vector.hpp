@@ -13,6 +13,7 @@
 /*
 =====================
     MATH LIBRARY
+    VECTOR
 =====================
 
 TODO: Write tests for all math/geometry library
@@ -540,7 +541,7 @@ tvec3<T> cross(const tvec3<T>& vec1, const tvec3<T>& vec2) {
 namespace ala::types {
 
 // Type constraits for vector
-// TODO: write **actual** constraints with requires statement
+// TODO: write actual constraints with requires statement
 
 template <typename T>
 concept vector_type = std::is_same_v<T, ::ala::math::tvec2<typename T::value_t>> ||

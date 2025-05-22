@@ -6,6 +6,16 @@
 
 #include <types.hpp>
 
+/*
+=====================
+    MATH LIBRARY
+    MATRIX
+=====================
+
+TODO: Write tests for all math/geometry library
+TODO: Check compiler's output (to see optimizations)
+*/
+
 namespace ala::math {
 
 // Generic versions of matrix
@@ -24,7 +34,7 @@ template <typename T>
   requires(types::is_number_v<T>)
 struct tmat4x4;
 
-// IDEA: use SIMD intrinsics where possible
+// TODO: use SIMD intrinsics where possible
 
 template <typename T>
   requires(types::is_number_v<T>)
@@ -32,7 +42,7 @@ struct tmat2x2 {
   using index_t = std::pair<usize, usize>;
   using value_t = T;
 
-  // NOTE: using tvec<N> as row_t can increase size of code because of instantiations tvec2<N> functions
+  // HACK: using tvec<N> as row_t can increase size of code because of instantiations tvec2<N> functions
   // TODO: replace it with 2D array
   // TODO: decide which format of storing matrix in 2D array should be chosen
 

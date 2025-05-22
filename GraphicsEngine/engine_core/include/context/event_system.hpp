@@ -1,5 +1,5 @@
-#ifndef ENGINE_CORE_CONTEXT_EVENTS_H
-#define ENGINE_CORE_CONTEXT_EVENTS_H
+#ifndef ENGINE_CORE_CONTEXT_EVENT_SYSTEM_H
+#define ENGINE_CORE_CONTEXT_EVENT_SYSTEM_H
 
 #include <GLFW/glfw3.h>
 
@@ -9,9 +9,7 @@
 
 namespace ala::ctx {
 
-// Window events
-
-// TODO...
+// TODO: Window events
 
 // Keyboard events
 
@@ -73,7 +71,9 @@ void poll_events();
 void wait_events();
 void wait_events(types::float64 timeout);
 
-struct event_dispatcher {
+void clear_event_queue();
+
+struct events_dispatcher {
   std::function<void(const key_event&)> key_pressed_dispatcher;
   std::function<void(const key_event&)> key_released_dispatcher;
 
@@ -82,15 +82,6 @@ struct event_dispatcher {
 
   std::function<void(const mouse_move_event&)> mouse_move_dispatcher;
 };
-
-void clear_event_queue();
-
-// Event stream object allow to apply object dispatcher
-
-//void iterate_monitor_events(std::function<void(const monitor_event&)> callback);
-//void iterate_window_events(std::function<void(const window_event&)> callback);
-//void iterate_keyboard_events(std::function<void(const keyboard_event&)> callback);
-//void iterate_mouse_events(std::function<void(const mouse_event&)> callback);
 
 }  // namespace ala::ctx
 

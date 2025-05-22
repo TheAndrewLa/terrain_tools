@@ -3,6 +3,10 @@
 
 #include <boost/predef.h>
 
+#if BOOST_ENDIAN_BIG_BYTE
+#error "Ala engine can not work for architecture with big endian"
+#endif
+
 // Headers for SIMD
 // Only x86-64 SIMD extensions are supported for now
 
@@ -40,9 +44,6 @@
     (BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_AVX2_VERSION)
 #include <xmmintrin.h>
 #endif
-
-// Headers for OS
-// Only Windows, Linux & MacOS
 
 namespace ala::platform {
 

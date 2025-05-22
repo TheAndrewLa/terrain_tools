@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD 20 REQUIRED)
 set(CMAKE_C_STANDARD 99 REQUIRED)
 
 include(FetchContent)
+include(CheckIPOSupported)
 
 FetchContent_Declare(
     glfw
@@ -22,6 +23,9 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(glfw)
 FetchContent_MakeAvailable(boost_predef)
 
+check_ipo_supported(RESULT ipo_supported OUTPUT ipo_supported_error)
+
+
 add_library(boost_predef_interface INTERFACE)
 target_include_directories(boost_predef_interface INTERFACE ${boost_predef_SOURCE_DIR}/include)
 
@@ -29,6 +33,13 @@ add_library(core STATIC)
 
 target_include_directories(core PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 target_include_directories(core PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+
+if(ipo_supported)
+message(STATUS "IPO/LTO enabled")
+set_property(TARGET core PROPERTY INTERPROCEDURAL_OPTIMIZATION TRUE)
+else()
+message(STATUS "IPO/LTO not supported: , <${ipo_supported_error}>")
+endif()
 
 target_link_libraries(core PUBLIC glfw boost_predef_interface)
 

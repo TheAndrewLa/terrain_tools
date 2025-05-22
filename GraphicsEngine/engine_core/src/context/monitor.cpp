@@ -65,7 +65,7 @@ monitor::size_type monitor::get_physical_size() const {
   return size;
 }
 
-GLFWmonitor* monitor::get_handle() {
+GLFWmonitor* monitor::get_handle() const {
   return hmonitor_;
 }
 

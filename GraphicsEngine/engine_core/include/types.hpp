@@ -4,6 +4,8 @@
 #include <cstddef>
 #include <cstdint>
 
+#include <type_traits>
+
 namespace ala::types {
 
 using uint8 = std::uint8_t;
