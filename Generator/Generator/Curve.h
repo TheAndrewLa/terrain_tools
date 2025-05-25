@@ -23,13 +23,16 @@ namespace terraingenerator {
             }
             return points_x;
         }
+
         void set_coefficients() {
-            int n = static_cast<int>(points_.size());
-            coefficients_.clear();
-            points_x_ = get_points_x(coefficients_);
-            for (int j = 1; j < n; ++j) {
-                for (int i = n - 1; i >= j; --i) {
-                    coefficients_[i] = (coefficients_[i] - coefficients_[i - 1]) / (points_x_[i] - points_x_[i - j]);
+            size_t n = points_.size();
+            std::vector<T> points_y{};
+            points_x_ = get_points_x(points_y);
+            coefficients_ = points_y;
+            for (size_t j = 1; j < n; ++j) {
+                for (size_t i = n - 1; i >= j; --i) {
+                    coefficients_[i] = (coefficients_[i] - coefficients_[i - 1]) /
+                                       (points_x_[i] - points_x_[i - j]);
                 }
             }
             seted_coefficients_ = true;
@@ -47,11 +50,7 @@ namespace terraingenerator {
         }
 
         void add_point(T x, T y) {
-            if (points_.contains(x)) {
-                points_[x] = y;
-            } else {
-                points_.insert({x, y});
-            }
+            points_[x] = y;
             seted_coefficients_ = false;
         }
 
@@ -61,8 +60,14 @@ namespace terraingenerator {
             }
             size_t n = coefficients_.size();
             T result = coefficients_[n - 1];
-            for (size_t i = 1; i <= n - 1; ++i) {
-                result = result * (x - points_x_[n - i]) + coefficients_[n - i];
+            for (size_t i = 1; i < n; ++i) {
+                result = result * (x - points_x_[n - i - 1]) + coefficients_[n - i - 1];
+            }
+            if (result < 0) {
+                return 0;
+            }
+            if (result > 1) {
+                return 1;
             }
             return result;
         }

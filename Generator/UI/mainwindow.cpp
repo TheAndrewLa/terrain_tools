@@ -19,6 +19,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->graphicsView->setScene(scene_);
     get_current_map();
     ui->curveOutputL->setText(QString::fromStdString(static_cast<std::string>(curve_)));
+    updateChart();
 }
 
 MainWindow::~MainWindow()
@@ -26,6 +27,7 @@ MainWindow::~MainWindow()
     delete ui;
     delete scene_;
     delete item_;
+    delete chart_view_;
 }
 
 void MainWindow::get_current_map() {
@@ -138,15 +140,63 @@ void MainWindow::on_addPointPB_clicked()
     double y = ui->curveYSB->value();
     curve_.add_point(x, y);
     ui->curveOutputL->setText(QString::fromStdString(static_cast<std::string>(curve_)));
+    updateChart();
 }
 
 
 void MainWindow::on_clearCurvePB_clicked()
 {
     curve_.clear();
+    updateChart();
 }
 
 void MainWindow::on_erosionCB_stateChanged(int arg1)
 {
     tg_.appled_erosion = static_cast<bool>(arg1);
+}
+
+QChartView* MainWindow::createCurveChartView(Curve<double>& curve)
+{
+    auto* series = new QLineSeries();
+
+    // Генерируем точки кривой от 0 до 1
+    const int samples = 100;
+    for (int i = 0; i <= samples; ++i) {
+        double x = static_cast<double>(i) / samples;
+        double y = curve.calculate(x);
+        series->append(x, y);
+    }
+
+    auto* chart = new QChart();
+    chart->addSeries(series);
+    chart->legend()->hide();
+    chart->setTitle("Curve");
+
+    // Настрой оси
+    auto* axisX = new QValueAxis();
+    axisX->setRange(0.0, 1.0);
+    axisX->setLabelFormat("%.2f");
+
+    auto* axisY = new QValueAxis();
+    axisY->setRange(0.0, 1.0);
+    axisY->setLabelFormat("%.2f");
+
+    chart->addAxis(axisX, Qt::AlignBottom);
+    chart->addAxis(axisY, Qt::AlignLeft);
+
+    series->attachAxis(axisX);
+    series->attachAxis(axisY);
+
+    return new QChartView(chart);
+}
+
+
+void MainWindow::updateChart() {
+    if (chart_view_ != nullptr) {
+        ui->curveLayout->removeWidget(chart_view_);
+        delete chart_view_;
+    }
+    chart_view_ = createCurveChartView(curve_);
+    chart_view_->setRenderHint(QPainter::Antialiasing);
+    ui->curveLayout->addWidget(chart_view_);
 }

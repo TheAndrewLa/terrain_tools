@@ -23,10 +23,10 @@ namespace terraingenerator {
 
         struct ErosionParams {
             size_t iterations = 100;
-            U capacity = 4.0f;
+            U capacity = 3.0f;
             U deposition = 0.1f;
             U erosion = 0.3f;
-            U evaporation = 0.01f;
+            U evaporation = 0.02f;
         };
 
         static U linear_interpolate(U a, U b, U x) {
@@ -101,13 +101,17 @@ namespace terraingenerator {
                                 U slope = (heightmap[i] - heightmap[ni]);
                                 U erosion_amount = std::min(slope * params.erosion, heightmap[i]);
                                 heightmap[i] -= erosion_amount;
-                                sediment[i] += erosion_amount;
+                                sediment[ni] += erosion_amount;
 
-                                U capacity = slope * water[i] * params.capacity;
-                                if (sediment[i] > capacity) {
-                                    U deposit = (sediment[i] - capacity) * params.deposition;
-                                    heightmap[i] += deposit;
-                                    sediment[i] -= deposit;
+                                U capacity = slope * water[ni] * params.capacity;
+                                // if (sediment[ni] > capacity) {
+                                //     U deposit = (sediment[ni] - capacity) * params.deposition;
+                                //     heightmap[ni] += deposit;
+                                //     sediment[ni] -= deposit;
+                                // }
+                                if (sediment[ni] > capacity) {
+                                    // Осадок просто теряется (или уходит вниз), но не влияет на высоту
+                                    sediment[ni] -= (sediment[ni] - capacity) * params.deposition;
                                 }
                             }
                         }

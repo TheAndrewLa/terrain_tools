@@ -3,6 +3,8 @@
 #include "../Types.h"
 #include <cstring>
 #include <cmath>
+#include <memory>
+
 using namespace types;
 
 namespace terraingenerator {
@@ -13,27 +15,18 @@ public:
     struct Node {
         T symbol;
         U freq;
-        Node* left = nullptr;
-        Node* right = nullptr;
-
-        ~Node() {
-            if (left != nullptr) {
-                delete left;
-            }
-            if (right != nullptr) {
-                delete right;
-            }
-        }
+        std::shared_ptr<Node> left;
+        std::shared_ptr<Node> right;
     };
 private:
     static constexpr uint32 count_T = std::numeric_limits<T>::max() + 1;
 
-    Node* root = nullptr;
+    std::shared_ptr<Node> root;
 
     uint32 codes[count_T];
     T codeLengths[count_T];
 
-    void insert(Node** heap, uint32& size, Node* node) {
+    void insert(std::shared_ptr<Node>* heap, uint32& size, std::shared_ptr<Node> node) {
         heap[size++] = node;
         long long i = size - 1;
         while (i > 0) {
@@ -41,15 +34,15 @@ private:
             if (heap[parent]->freq <= heap[i]->freq) {
                 break;
             }
-            Node* tmp = heap[parent];
+            std::shared_ptr<Node> tmp = heap[parent];
             heap[parent] = heap[i];
             heap[i] = tmp;
             i = parent;
         }
     }
 
-    Node* extractMin(Node** heap, uint32& size) {
-        Node* minNode = heap[0];
+    std::shared_ptr<Node> extractMin(std::shared_ptr<Node>* heap, uint32& size) {
+        std::shared_ptr<Node> minNode = heap[0];
         heap[0] = heap[--size];
         uint32 i = 0;
         while (true) {
@@ -65,7 +58,7 @@ private:
             if (smallest == i) {
                 break;
             }
-            Node* tmp = heap[i];
+            std::shared_ptr<Node> tmp = heap[i];
             heap[i] = heap[smallest];
             heap[smallest] = tmp;
             i = smallest;
@@ -73,7 +66,7 @@ private:
         return minNode;
     }
 
-    void buildCodeTable(Node* node, uint32 code, T length) {
+    void buildCodeTable(std::shared_ptr<Node> node, uint32 code, T length) {
         if (!node->left && !node->right) {
             codes[node->symbol] = code;
             codeLengths[node->symbol] = length;
@@ -91,17 +84,17 @@ public:
     HuffmanCommpressor(uint32 freq[count_T]) {
         memset(codes, 0, sizeof(codes));
         memset(codeLengths, 0, sizeof(codeLengths));
-        Node* heap[count_T];
+        std::shared_ptr<Node> heap[count_T];
         uint32 heapSize = 0;
         for (uint32 i = 0; i < count_T; ++i) {
             if (freq[i] > 0) {
-                insert(heap, heapSize, new Node(i, freq[i]));
+                insert(heap, heapSize, std::make_shared<Node>(i, freq[i]));
             }
         }
         while (heapSize > 1) {
-            Node* a = extractMin(heap, heapSize);
-            Node* b = extractMin(heap, heapSize);
-            insert(heap, heapSize, new Node(0, a->freq + b->freq, a, b));
+            std::shared_ptr<Node> a = extractMin(heap, heapSize);
+            std::shared_ptr<Node> b = extractMin(heap, heapSize);
+            insert(heap, heapSize, std::make_shared<Node>(0, a->freq + b->freq, a, b));
         }
         root = heapSize == 1 ? heap[0] : nullptr;
         buildCodeTable(root, 0, 0);
@@ -133,7 +126,7 @@ public:
         T* out = new T[expectedSize];
         uint32 outIndex = 0;
         uint32 bytePos = 0, bitPos = 0;
-        Node* node = root;
+        std::shared_ptr<Node> node = root;
         T current = firstValue;
         out[outIndex++] = current;
         while (bytePos < dataSize && outIndex < expectedSize) {
@@ -151,10 +144,6 @@ public:
             }
         }
         return out;
-    }
-
-    ~HuffmanCommpressor() {
-        delete root;
     }
 };
 }

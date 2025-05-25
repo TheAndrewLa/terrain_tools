@@ -19,7 +19,8 @@ public:
     explicit Terrain3DViewer(QWidget *parent = nullptr);
     ~Terrain3DViewer();
 
-    void setTerrain(const terraingenerator::Terrain<uchar> &terrain, const terraingenerator::Terrain<uchar> &moisture_map);
+    void setTerrain(const terraingenerator::Terrain<uchar> &terrain,
+                    const terraingenerator::Terrain<uchar> &moisture_map);
 
 protected:
     void initializeGL() override;
@@ -48,7 +49,7 @@ private:
         TROPICAL_RAIN_FOREST      = 0x3D6A3D
     };
 
-    static Biome biome(float e, float m) {
+    static Biome get_biome(const float e, const float m) {
         if (e < 0.15) return Biome::OCEAN;
         if (e < 0.2) return Biome::BEACH;
 

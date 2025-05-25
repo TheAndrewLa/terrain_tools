@@ -7,6 +7,9 @@
 #include <QGraphicsItem>
 #include "../Generator/terraingenerator.h"
 #include "../Generator/Curve.h"
+#include <QtCharts/QChartView>
+#include <QtCharts/QLineSeries>
+#include <QtCharts/QValueAxis>
 
 
 using namespace terraingenerator;
@@ -28,6 +31,7 @@ private:
     HeightMap<double> map_{};
     HeightMap<double> moisture_map_{};
     Curve<double> curve_{};
+    QChartView* chart_view_ = nullptr;
 
     std::mutex mtx_image_;
     std::mutex mtx_generator_;
@@ -37,6 +41,8 @@ private:
     QGraphicsPixmapItem* item_ = nullptr;
     void get_current_map();
     void generate_random();
+    QChartView* createCurveChartView(Curve<double>& curve);
+    void updateChart();
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();

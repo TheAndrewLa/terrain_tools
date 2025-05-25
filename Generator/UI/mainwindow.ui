@@ -487,8 +487,8 @@
    <widget class="QLabel" name="curveOutputL">
     <property name="geometry">
      <rect>
-      <x>70</x>
-      <y>50</y>
+      <x>850</x>
+      <y>630</y>
       <width>181</width>
       <height>151</height>
      </rect>
@@ -525,6 +525,17 @@
     <property name="text">
      <string/>
     </property>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>20</y>
+      <width>241</width>
+      <height>191</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="curveLayout"/>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

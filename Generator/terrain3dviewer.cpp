@@ -30,7 +30,7 @@ void Terrain3DViewer::setTerrain(const terraingenerator::Terrain<uchar> &terrain
             float e = 1.0 * heightVal / 255;
             float m = 1.0 * moisture_map[x][y]/ 255;  // пример влажности, надо иметь такой массив
 
-            Biome b = biome(e, m);
+            Biome b = get_biome(e, m);
             Color c = colorFromUInt(static_cast<uint32_t>(b));
 
             vertices.push_back(float(x));     // x
@@ -127,7 +127,7 @@ void Terrain3DViewer::updateBuffers() {
         return;
     }
     shaderProgram.enableAttributeArray(posLoc);
-    shaderProgram.setAttributeBuffer(posLoc, GL_FLOAT, 0, 3, 3 * sizeof(float));
+    shaderProgram.setAttributeBuffer(posLoc, GL_FLOAT, 0, 3, 6 * sizeof(float));
 
     int colorLoc = shaderProgram.attributeLocation("a_color");
     shaderProgram.enableAttributeArray(colorLoc);
@@ -201,8 +201,8 @@ void Terrain3DViewer::paintGL() {
 
     shaderProgram.bind();
 
-    shaderProgram.setUniformValue("u_projection", projection);
-    shaderProgram.setUniformValue("u_modelView", modelView);
+    QMatrix4x4 mvp = projection * modelView;
+    shaderProgram.setUniformValue("modelViewProjection", mvp);
 
     vao.bind();
     glDrawElements(GL_TRIANGLES, vertexCount, GL_UNSIGNED_INT, nullptr);
