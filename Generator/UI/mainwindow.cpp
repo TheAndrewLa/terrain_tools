@@ -3,6 +3,8 @@
 #include <thread>
 #include "../FileConverter/fileconverter.h"
 #include "../ImageGenerator/imagegenerator.h"
+#include "../terrain3dviewer.h"
+#include <QTimer>
 #include "../Types.h"
 
 using namespace types;
@@ -84,9 +86,18 @@ void MainWindow::generate_random() {
 
 void MainWindow::on_randomPB_clicked()
 {
-    ui->outputL->setText("start");
-    generate_random();
-    ui->seedLE->setText(QString::fromStdString(std::to_string(map_.seed)));
+    // Заполните terrain.map() вашими данными...
+
+    Terrain3DViewer* viewer = new Terrain3DViewer(this);
+    setCentralWidget(viewer);
+    viewer->show();
+
+    QTimer::singleShot(0, [viewer, this]() {
+        viewer->setTerrain(terrain_, moisture_);
+    });
+    // ui->outputL->setText("start");
+    // generate_random();
+    // ui->seedLE->setText(QString::fromStdString(std::to_string(map_.seed)));
 }
 
 void MainWindow::on_imagePB_clicked()
