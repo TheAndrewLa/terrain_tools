@@ -32,21 +32,21 @@ protected:
 
 private:
     enum class Biome : uint32 {
-        OCEAN                     = 0x44447A,  // Темно-синий
-        BEACH                     = 0xF0E68C,  // Песочный
-        SCORCHED                  = 0x555555,  // Серый
-        BARE                      = 0x888888,  // Светло-серый
-        TUNDRA                    = 0xDDDDAF,  // Светло-бежевый
-        SNOW                      = 0xFFFFFF,  // Белый
-        TEMPERATE_DESERT          = 0xEDC9AF,  // Пустынный
-        SHRUBLAND                 = 0xC4D4A3,  // Светло-зеленый
-        TAIGA                     = 0x99AE7E,  // Зеленый тайги
-        GRASSLAND                 = 0x88AA54,  // Травяной зеленый
-        TEMPERATE_DECIDUOUS_FOREST= 0x679459,  // Лесной зеленый
-        TEMPERATE_RAIN_FOREST     = 0x4F8053,  // Темно-зеленый
-        SUBTROPICAL_DESERT        = 0xD2B98B,  // Песочный пустыни
-        TROPICAL_SEASONAL_FOREST  = 0x5A8F4C,  // Тропический зеленый
-        TROPICAL_RAIN_FOREST      = 0x3D6A3D
+        OCEAN                     = 0x44447A,  // Dark Ocean Blue
+        BEACH                     = 0xF0E68C,  // Sand Beige
+        SCORCHED                  = 0x555555,  // Medium Gray
+        BARE                      = 0x888888,  // Light Gray
+        TUNDRA                    = 0xDDDDAF,  // Tundra Beige
+        SNOW                      = 0xFFFFFF,  // Pure White
+        TEMPERATE_DESERT          = 0xEDC9AF,  // Desert Sand
+        SHRUBLAND                 = 0xC4D4A3,  // Light Olive Green
+        TAIGA                     = 0x99AE7E,  // Taiga Green
+        GRASSLAND                 = 0x88AA54,  // Grassy Green
+        TEMPERATE_DECIDUOUS_FOREST= 0x679459,  // Fern Green
+        TEMPERATE_RAIN_FOREST     = 0x4F8053,  // Deep Forest Green
+        SUBTROPICAL_DESERT        = 0xD2B98B,  // Desert Tan
+        TROPICAL_SEASONAL_FOREST  = 0x5A8F4C,  // Desert Tan
+        TROPICAL_RAIN_FOREST      = 0x3D6A3D   // Rainforest Green
     };
 
     static Biome get_biome(const float e, const float m) {
@@ -96,7 +96,7 @@ private:
     QOpenGLBuffer indexBuffer{QOpenGLBuffer::IndexBuffer};
     QOpenGLVertexArrayObject vao;
 
-    QVector<float> vertices; // x,y,z
+    QVector<float> vertices;
     QVector<unsigned int> indices;
 
     int vertexCount = 0;

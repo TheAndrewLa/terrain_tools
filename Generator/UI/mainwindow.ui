@@ -537,6 +537,19 @@
     </property>
     <layout class="QVBoxLayout" name="curveLayout"/>
    </widget>
+   <widget class="QPushButton" name="view3dPB">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>710</y>
+      <width>111</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>3D view</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

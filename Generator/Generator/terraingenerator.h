@@ -110,7 +110,6 @@ namespace terraingenerator {
                                 //     sediment[ni] -= deposit;
                                 // }
                                 if (sediment[ni] > capacity) {
-                                    // Осадок просто теряется (или уходит вниз), но не влияет на высоту
                                     sediment[ni] -= (sediment[ni] - capacity) * params.deposition;
                                 }
                             }
@@ -199,14 +198,18 @@ namespace terraingenerator {
                     U nx = map.x_offset + x_center + (xx - x_center) * cos_angle - (yy - y_center) * sin_angle;
                     U ny = map.y_offset + y_center + (xx - x_center) * sin_angle + (yy - y_center) * cos_angle;
 
+
+                    U nx1 = 2*x/map.height - 1;
+                    U ny1 = 2*y/map.width - 1;
+                    //U d = std::min(1.0, (nx1 * nx1 + ny1 * ny1) / sqrt(2));
+                    U d = 1 - (1 - nx1 * nx1) * ( 1 - ny1 * ny1);
                     nx = nx / map.scale;
                     ny = ny / map.scale;
-                    U d = std::min(1.0, (nx * nx + ny * ny) / sqrt(2));
+
                     U e = PerlinNoise<U>::noise2D(nx, ny, map.octaves, map.amplitude);
-                    e = linear_interpolate(e, 1 - d, 0.6);
+                    e = linear_interpolate(e, 1 - d, 0);
                     e = curve.calculate(e);
                     terrain[x][y] = static_cast<T>(e * max_T);
-
                 }
             }
             ErosionParams params{};
@@ -220,8 +223,8 @@ namespace terraingenerator {
 
         void generate_random_map(HeightMap<U>& map) {
             map.seed = dist_(generator_);
-            map.amplitude = ((map.seed & 0xffff) % 500) * 0.01;
-            map.octaves = 1 + (map.seed & 0xffff0000 >> 16) % 5;
+            map.amplitude = ((map.seed & 0xffff) % 5000) * 0.01;
+            map.octaves = 1 + (map.seed & 0xffff0000 >> 16) % 10;
         }
     };
 }

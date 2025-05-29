@@ -123,7 +123,7 @@ namespace terraingenerator {
             HuffmanCommpressor<T, U> commpressor(freq);
             T* heightmap = commpressor.decompress(compressed.get(), compressed_size, size, first);
 
-            return {height, width, heightmap};
+            return {width, height, heightmap};
         }
     };
 }

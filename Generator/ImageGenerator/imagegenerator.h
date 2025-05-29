@@ -63,11 +63,10 @@ namespace terraingenerator {
         static void export_png(const Terrain<T>& terrain, const Terrain<T>& moisture_map, const char* file_name) {
             const size_t width = terrain.width();
             const size_t height = terrain.height();
+            QImage image(height, width, QImage::Format_ARGB32);
 
-            QImage image(width, height, QImage::Format_ARGB32);
-
-            for (size_t y = 0; y < height; ++y) {
-                for (size_t x = 0; x < width; ++x) {
+            for (size_t x = 0; x < height; ++x) {
+                for (size_t y = 0; y < width; ++y) {
                     Biome b = biome(1.0 * terrain[x][y] / max_T, 1.0 * moisture_map[x][y] / max_T);
                     image.setPixel(x, y, static_cast<uint32_t>(b) | 0xFF000000);
                 }

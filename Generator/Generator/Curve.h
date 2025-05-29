@@ -74,6 +74,8 @@ namespace terraingenerator {
 
         void clear() {
             coefficients_.clear();
+            points_x_.clear();
+            points_.clear();
             add_edge_points();
             set_coefficients();
         }

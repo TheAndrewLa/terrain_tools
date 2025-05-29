@@ -6,6 +6,8 @@
 #include "../terrain3dviewer.h"
 #include <QTimer>
 #include "../Types.h"
+#include <windows.h>
+#include <tchar.h>
 
 using namespace types;
 
@@ -63,7 +65,9 @@ void MainWindow::on_generatePB_clicked()
 
     std::thread th([this]{
         terrain_ = tg_.generate(map_, curve_);
-        moisture_ = tg_.generate(moisture_map_, curve_);
+        HeightMap<double> moisture_map = map_;
+        tg_.generate_random_map(moisture_map);
+        moisture_ = tg_.generate(map_, curve_);
         ui->outputL->setText("generated");
 
         ui->generatePB->setEnabled(true);
@@ -88,18 +92,9 @@ void MainWindow::generate_random() {
 
 void MainWindow::on_randomPB_clicked()
 {
-    // Заполните terrain.map() вашими данными...
-
-    Terrain3DViewer* viewer = new Terrain3DViewer(this);
-    setCentralWidget(viewer);
-    viewer->show();
-
-    QTimer::singleShot(0, [viewer, this]() {
-        viewer->setTerrain(terrain_, moisture_);
-    });
-    // ui->outputL->setText("start");
-    // generate_random();
-    // ui->seedLE->setText(QString::fromStdString(std::to_string(map_.seed)));
+    ui->outputL->setText("start");
+    generate_random();
+    ui->seedLE->setText(QString::fromStdString(std::to_string(map_.seed)));
 }
 
 void MainWindow::on_imagePB_clicked()
@@ -147,6 +142,7 @@ void MainWindow::on_addPointPB_clicked()
 void MainWindow::on_clearCurvePB_clicked()
 {
     curve_.clear();
+    ui->curveOutputL->setText(QString::fromStdString(static_cast<std::string>(curve_)));
     updateChart();
 }
 
@@ -159,7 +155,6 @@ QChartView* MainWindow::createCurveChartView(Curve<double>& curve)
 {
     auto* series = new QLineSeries();
 
-    // Генерируем точки кривой от 0 до 1
     const int samples = 100;
     for (int i = 0; i <= samples; ++i) {
         double x = static_cast<double>(i) / samples;
@@ -172,7 +167,6 @@ QChartView* MainWindow::createCurveChartView(Curve<double>& curve)
     chart->legend()->hide();
     chart->setTitle("Curve");
 
-    // Настрой оси
     auto* axisX = new QValueAxis();
     axisX->setRange(0.0, 1.0);
     axisX->setLabelFormat("%.2f");
@@ -200,3 +194,18 @@ void MainWindow::updateChart() {
     chart_view_->setRenderHint(QPainter::Antialiasing);
     ui->curveLayout->addWidget(chart_view_);
 }
+
+void MainWindow::on_view3dPB_clicked()
+{
+    const char* command = "C:\\Users\\natal\\Downloads\\main.exe";
+    system(command);
+
+    // Terrain3DViewer* viewer = new Terrain3DViewer(this);
+    // setCentralWidget(viewer);
+    // viewer->show();
+
+    // QTimer::singleShot(0, [viewer, this]() {
+    //     viewer->setTerrain(terrain_, moisture_);
+    // });
+}
+

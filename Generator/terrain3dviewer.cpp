@@ -21,32 +21,29 @@ void Terrain3DViewer::setTerrain(const terraingenerator::Terrain<uchar> &terrain
     vertices.clear();
     indices.clear();
 
-    //Создаем вершины (x,y,z), y - высота
-    for (int y = 0; y < height_; ++y) {
-        for (int x = 0; x < width_; ++x) {
+    for (int x = 0; x < height_; ++x) {
+        for (int y = 0; y < width_; ++y) {
             float heightVal = terrain[x][y];
 
-            // e и m — нормализованные высота и влажность [0..1]
             float e = 1.0 * heightVal / 255;
-            float m = 1.0 * moisture_map[x][y]/ 255;  // пример влажности, надо иметь такой массив
+            float m = 1.0 * moisture_map[x][y]/ 255;
 
             Biome b = get_biome(e, m);
             Color c = colorFromUInt(static_cast<uint32_t>(b));
 
-            vertices.push_back(float(x));     // x
-            vertices.push_back(heightVal);    // y
-            vertices.push_back(float(y));     // z
+            vertices.push_back(float(x));
+            vertices.push_back(heightVal);
+            vertices.push_back(float(y));
 
             vertices.push_back(c.r);
             vertices.push_back(c.g);
-            vertices.push_back(c.b);      // z
+            vertices.push_back(c.b);
         }
     }
 
-    // Индексы для треугольников (две треугольных клетки на квадрат)
-    for (int y = 0; y < height_ - 1; ++y) {
-        for (int x = 0; x < width_ - 1; ++x) {
-            int i = y * width_ + x;
+    for (int x = 0; x < height_ - 1; ++x) {
+        for (int y = 0; y < width_ - 1; ++y) {
+            int i = x * height_ + y;
 
             indices.push_back(i);
             indices.push_back(i + 1);
@@ -60,7 +57,6 @@ void Terrain3DViewer::setTerrain(const terraingenerator::Terrain<uchar> &terrain
 
     vertexCount = indices.size();
 
-    // // Обновляем буферы на GPU
     updateBuffers();
 
     update();
@@ -138,7 +134,6 @@ void Terrain3DViewer::updateBuffers() {
     indexBuffer.release();
     shaderProgram.release();
 
-
     doneCurrent();
 }
 
@@ -149,7 +144,6 @@ void Terrain3DViewer::initializeGL() {
     glEnable(GL_DEPTH_TEST);
     glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
 
-    // Компилируем шейдеры
     if (!shaderProgram.addShaderFromSourceCode(QOpenGLShader::Vertex,
                                                R"(#version 330 core
 layout(location = 0) in vec3 a_position;

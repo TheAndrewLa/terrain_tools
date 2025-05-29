@@ -63,6 +63,8 @@ private slots:
 
     void on_erosionCB_stateChanged(int arg1);
 
+    void on_view3dPB_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
