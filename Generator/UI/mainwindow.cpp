@@ -105,10 +105,10 @@ void MainWindow::on_imagePB_clicked()
     }
     ui->imagePB->setEnabled(false);
     ui->generatePB->setEnabled(false);
-    FileConverter<uchar>::to_file<double>(terrain_, "out_terrain");
-    terrain_ = FileConverter<uchar>::from_file<double>("out_terrain");
-    FileConverter<uchar>::to_file<double>(moisture_, "out_moisture");
-    moisture_ = FileConverter<uchar>::from_file<double>("out_moisture");
+    FileConverter<uchar>::to_file(terrain_, "out_terrain");
+    terrain_ = FileConverter<uchar>::from_file("out_terrain");
+    FileConverter<uchar>::to_file(moisture_, "out_moisture");
+    moisture_ = FileConverter<uchar>::from_file("out_moisture");
     ImageGenerator<uchar, double>::export_png(terrain_, moisture_, file_image_);
 
     ui->outputL->setText("image");
@@ -197,15 +197,15 @@ void MainWindow::updateChart() {
 
 void MainWindow::on_view3dPB_clicked()
 {
-    const char* command = "C:\\Users\\natal\\Downloads\\main.exe";
-    system(command);
+    // const char* command = "C:\\Users\\natal\\Downloads\\main.exe";
+    // system(command);
 
-    // Terrain3DViewer* viewer = new Terrain3DViewer(this);
-    // setCentralWidget(viewer);
-    // viewer->show();
+    Terrain3DViewer* viewer = new Terrain3DViewer(this);
+    setCentralWidget(viewer);
+    viewer->show();
 
-    // QTimer::singleShot(0, [viewer, this]() {
-    //     viewer->setTerrain(terrain_, moisture_);
-    // });
+    QTimer::singleShot(0, [viewer, this]() {
+        viewer->setTerrain(terrain_, moisture_);
+    });
 }
 

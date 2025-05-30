@@ -40,7 +40,6 @@ namespace terraingenerator {
         }
 
     public:
-        template <std::floating_point U>
         static void to_file(Terrain<T>& terrain, const char* file_name) {
             const uint32 count_U = std::numeric_limits<T>::max() + 1;
             size_t size = terrain.height_ * terrain.width_;
@@ -73,7 +72,7 @@ namespace terraingenerator {
                 write_freq<uint32>(freq, output_file);
             }
 
-            HuffmanCommpressor<T, U> commpressor(freq);
+            HuffmanCommpressor<T> commpressor(freq);
             uint32 compressedSize;
             T* compressed = commpressor.compress(delta.get(), size, compressedSize, delta[0]);
 
@@ -87,7 +86,6 @@ namespace terraingenerator {
             delete[] compressed;
         }
 
-        template <std::floating_point U>
         static Terrain<T> from_file(const char* file_name) {
             const uint32 count_U = std::numeric_limits<T>::max() + 1;
             std::ifstream input_file(file_name, std::ios::binary);
@@ -110,6 +108,7 @@ namespace terraingenerator {
             uint32 height, width;
             input_file.read(reinterpret_cast<char*>(&height), sizeof(uint32));
             input_file.read(reinterpret_cast<char*>(&width), sizeof(uint32));
+            std::cout << height << " " << width << "\n";
 
             T first;
             input_file.read(reinterpret_cast<char*>(&first), sizeof(T));
@@ -120,7 +119,7 @@ namespace terraingenerator {
             input_file.read(reinterpret_cast<char*>(compressed.get()), compressed_size);
 
             uint32 size = height * width;
-            HuffmanCommpressor<T, U> commpressor(freq);
+            HuffmanCommpressor<T> commpressor(freq);
             T* heightmap = commpressor.decompress(compressed.get(), compressed_size, size, first);
 
             return {width, height, heightmap};

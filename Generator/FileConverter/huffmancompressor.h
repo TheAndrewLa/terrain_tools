@@ -8,13 +8,13 @@
 using namespace types;
 
 namespace terraingenerator {
-template <std::unsigned_integral T, std::floating_point U>
+template <std::unsigned_integral T>
 class HuffmanCommpressor
 {
 public:
     struct Node {
         T symbol;
-        U freq;
+        uint32 freq;
         std::shared_ptr<Node> left;
         std::shared_ptr<Node> right;
     };
